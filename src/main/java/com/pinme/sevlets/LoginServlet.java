@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pinme.controllers.Test;
 import com.pinme.controllers.UserController;
+import com.pinme.model.User;
 import com.pinme.util.JSonMapperSingleTon;
 
 /**
@@ -56,11 +59,14 @@ public class LoginServlet extends HttpServlet {
 
 		response.setContentType("application/json");
 
-//		PrintWriter out = response.getWriter();
-//		out.println(username);
-//		out.println(password);
+
 
 		if (UserController.getInstance().authenticate(username, password)) {
+			User us = UserController.getInstance().getUser(username, password);
+			HttpSession session=request.getSession();  
+		    session.setAttribute("userid",us.getId());  
+		          
+		       
 			response.setContentType("text/html");
 			request.getRequestDispatcher("home.html").forward(request, response);
 		}else{
