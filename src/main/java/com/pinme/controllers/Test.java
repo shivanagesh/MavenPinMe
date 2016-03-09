@@ -7,8 +7,7 @@ import com.pinme.model.EventCategory;
 import com.pinme.model.User;
 
 /**
- * @author Shivanagesh Chandra Mar 8, 2016 1:29:57 PM
- * fileTest.java
+ * @author Shivanagesh Chandra Mar 8, 2016 1:29:57 PM fileTest.java
  */
 public class Test {
 
@@ -37,17 +36,21 @@ public class Test {
 		Event ev = new Event("03-12-2016 11:15:00 AM", "03-12-2016 11:15:00 PM", "food distribution", -1, false, -1, "Free meal", userId, categoryId);
 		Event ev1 = new Event("03-13-2016 11:15:00 AM", "03-13-2016 11:15:00 PM", "food distribution", 100, true, -1, "Free", userId, categoryId);
 		Event ev2 = new Event("03-12-2016 11:15:00 AM", "03-12-2016 11:15:00 PM", "food distribution", -1, false, -1, "Cloths distribution", userId, categoryId);
-		Address ad = new Address("455", "431 El camino real", "Santa Clara", "CA", "95050", "USA", " ", " ");
+		new Address("455", "431 El camino real", "Santa Clara", "CA", "95050", "USA", " ", " ");  
+		
+		Event ev4 = new Event("03/17/2016 12:00", "", "On eve of St Patricks day there is lunch been provided to all the grad students", 100, true, -1, "St Patricks Day  Lunch", userId, categoryId);
+		Address ad = new Address("Lobby of engineering building", "", "", "", "", "", " ", "");
+		
 		
 		int EventId = EventController.getInstance().createEvent(ad, categoryId, ev);
-		EventController.getInstance().createEvent(ad, catgoryID2, ev1);
-		EventController.getInstance().createEvent(ad, catgoryID2, ev2);
+		EventController.getInstance().createEvent(ad, categoryId, ev1);
+		EventController.getInstance().createEvent(ad, categoryId, ev2);
+		EventController.getInstance().createEvent(ad, categoryId, ev2);
 
 		System.out.println("*************");
 		System.out.println(EventController.getInstance().getEvents());
 		System.out.println("----------------------");
 		EventController.getInstance().pinEvent(userId, EventId);
 	}
-	
 
 }
