@@ -17,12 +17,9 @@ public class UserController {
 	public UserController() {
 		// TODO Auto-generated constructor stub
 		user =  new UserDao();
-		loadData();
+		
 	}
-	public void loadData(){
-		User us = new User("Shivangesh", "Chandra", "123456", "ch.shivanagesh@gmail.com", "848-333-1895");
-		addUser(us);
-	}
+	
 
 	public static UserController getInstance() {
 		if (instance == null) {

@@ -1,4 +1,4 @@
-1.padding {
+.padding {
     background: #FEFEFA;
     color: black;
     overflow-x: hidden;
@@ -21,9 +21,10 @@
 }
 
 .user {
-    float: right;
-    position: relative;
-    top: -100px;
+        float: right;
+    position: absolute;
+    right: 0px;
+    top: -3px;
 }
 
 .user:hover .user-content {
@@ -140,7 +141,7 @@ color: #76FF03;
 .buttons {
     position: relative;
     float: right;
-    margin-top: -7%;
+        margin-top: -5%;
     margin-left: 2%;
     padding: 0% 6%;
     font-size: 20px;
@@ -210,10 +211,10 @@ sup{
 }
 footer {
     background-color: #7CB342;
-    position: relative !important;
-    bottom: 0px;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
     width: 100%;
-    height: 35px;
     z-index: -3;
 }
 
@@ -247,6 +248,46 @@ footer {
 #error{
     color: red;
 }
+
+
+.event {
+    width: 100%;
+    display: table;
+    padding: 10px;
+    border-bottom: solid 1px #d9d9d9;
+}
+
+.event:first-child {
+    border-top: solid 1px #d9d9d9;
+}
+
+.event_titles{
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-size: 2.4rem;
+    font-weight: 100;
+    color: #a8a8aa;
+}
+
+.event:hover {
+    background-color: #f7f7f7;
+    cursor: pointer;
+}
+
+.event .event-photo {
+    width: 80px;
+}
+.event .event-photo > img{
+     width: 100%;
+}
+   
+.event>* {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
 
 
 
@@ -344,3 +385,4 @@ ul#couponlist:before, ul#couponlist:after {
     width: 100px;
     margin: 10px 100px;
 }
+
