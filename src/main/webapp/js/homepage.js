@@ -116,8 +116,14 @@ var data = [{
 
 
 function newevent(){
-	$(this).click(function(){
-		alert("This Event is Selected!");
+	$("#couponlist > li").click(function(){
+		var r =confirm("This Event is Selected!");
+		if (r == true) {
+			       alert("Token emailed");
+			 
+		} else {
+		    x = "You pressed Cancel!";
+		}
 	});
 }
 

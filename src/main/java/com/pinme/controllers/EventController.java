@@ -75,18 +75,18 @@ public class EventController {
 	
 	public void pinEvent(int userid,int eventId) {
 		try {
-			if(eventDao.getEvent(eventId).isTokenized()){
+//			if(eventDao.getEvent(eventId).isTokenized()){
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			Date date = new Date();
 			String timeStamp = dateFormat.format(date);
 			Token t = new Token(eventId,userid,timeStamp);
 			int tokenId = tokendao.generateToken(t);
-			System.out.println(userid);
-			User u = userDao.getUser(userid);
-			eventDao.getEvent(eventId).setTokenLimit(eventDao.getEvent(eventId).getTokenLimit()-1);
-			System.out.println(u);
-			Mail.sendMail(u.getEmail(), "Hey there, \n Your token number is "+tokenId+" \n Thanks,\n Pinme", "Your token");
-			}
+//			System.out.println(userid);
+//			User u = userDao.getUser(userid);
+//			eventDao.getEvent(eventId).setTokenLimit(eventDao.getEvent(eventId).getTokenLimit()-1);
+			//System.out.println(u);
+			Mail.sendMail("ch.shivanagesh@gmail.com", "Hey there, \n Your token number is "+tokenId+" \n Thanks,\n Pinme", "Your token");
+		//}
 			} catch (Exception e) {
 			e.printStackTrace();
 		}
