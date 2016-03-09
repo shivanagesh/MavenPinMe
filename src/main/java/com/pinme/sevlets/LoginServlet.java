@@ -40,23 +40,24 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String username=request.getParameter("userName");
-		String password=request.getParameter("Password");
+//		String username=request.getParameter("userName");
+//		String password=request.getParameter("Password");
 		
-		response.setContentType("text/html");
-		request.getRequestDispatcher("home.html").forward(request, response);
+//		response.setContentType("text/html");
+//		request.getRequestDispatcher("home.html").forward(request, response);
 		
 		 response.setContentType("application/json");
+		
 	     PrintWriter out = response.getWriter();
-	     out.println(username);
-	     out.println(password);
-	     
-	     if(UserController.getInstance().authenticate(username, password))
-	     {
-		String jsonInString = JSonMapperSingleTon.getInstance().writeValueAsString((UserController.getInstance().getUser(username, password)));
-		System.out.println(jsonInString);
-		out.println(jsonInString);
-	    	 }
+	     out.println("LoginServelt");
+//	     out.println(password);
+//	     
+//	     if(UserController.getInstance().authenticate(username, password))
+//	     {
+//		String jsonInString = JSonMapperSingleTon.getInstance().writeValueAsString((UserController.getInstance().getUser(username, password)));
+//		System.out.println(jsonInString);
+//		out.println(jsonInString);
+//	    	 }
 		
 		
 		

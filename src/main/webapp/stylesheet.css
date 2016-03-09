@@ -113,7 +113,7 @@ color: #76FF03;
 .buttons {
     position: relative;
     float: right;
-    margin-top: -7%;
+        margin-top: -5%;
     margin-left: 2%;
     padding: 0% 6%;
     font-size: 20px;
@@ -185,9 +185,8 @@ footer {
     background-color: #7CB342;
     text-align: center;
     position: absolute;
-    bottom: 0px;
+    bottom: 10px;
     width: 100%;
-    height: 35px;
     z-index: -3;
 }
 
