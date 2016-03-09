@@ -256,3 +256,9 @@ ul#couponlist:before, ul#couponlist:after {
     width: 140px;
     height: 120px;
 }
+
+.coupons ul li{
+    z-index: -1;
+    opacity: 0.5;
+
+}
