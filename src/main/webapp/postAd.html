@@ -1,0 +1,58 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheet.css">
+        <link rel="icon" href="images/pinfavicon.ico" />
+    <title>Pin Me</title>
+</head>
+
+<body>
+    <header>
+        <h1>Pin Me!</h1>
+        <div class="user">
+            <button class="account"><i class="fa fa-user"></i></button>
+            <div class="user-content">
+                <ul>
+                    <li><a href="History.html">History</a></li>
+                    <li><a href="postAd.html">Post Coupon</a></li>
+                    <li><a href="CouponSearch.html">Find Coupons</a></li>
+                    <li><a href="login.html"> Logout</a> </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <section>
+    <form action="home.html">
+<fieldset>
+    <label>Name of Event<input type="text" name="event" id="eventname" placeholder="Story Telling"></label>
+    <label>Event Date :<input type="date" name="eventdate" id="eventdate" placeholder="mm-dd-yy"></label>
+    <label>Event Time:<input type="time" name="eventtime" id="eventtime"></label>
+  <fieldset>
+      <legend>Loaction</legend>
+      <label>Address:<input type="text" name="address" id="address" placeholder="1303 oakcircle st"></label>
+      <label>City:<input type="text" name="city" id="city" placeholder="SFO"></label>
+      <label>ZipCode:<input type="number" name="zipcode" id="zipcode" placeholder="12345"></label>
+      <label>Addition Landmarks:<input type="text" name="landmarks" id="landmarks" placeholder="near school"></label>
+  </fieldset>
+  <label>Catergory
+  <select name="Catergory">
+   <option value="None selected">Please select below</option>
+    <option value="Food">Food</option>
+    <option value="Clothing">Clothing</option>
+    <option value="Entertainment">Entertainment</option>
+    <option value="recreation">recreation</option>
+   </select>
+   </label>
+  <label>Description<textarea rows="5" cols="50" placeholder="Additional Description of the event"></textarea></label>
+  <div>
+  <button type="submit">Post</button>
+  <button type="reset" value="Reset"> Reset</button>
+  </div>
+</fieldset>
+</form>
+    </section>
+</body>
+</html>
