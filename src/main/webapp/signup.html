@@ -1,24 +1,44 @@
 <!Doctype html>
 <html>
 <head>
-    <link rel="icon" href="images/pinfavicon.ico" />
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="icon" href="images/pinfavicon.ico" />
+	 <link rel="stylesheet" href="stylesheet.css"/>
     <title>Pin Me</title>
 </head>
-<body>
-<header>
-<h1>Pin Me!</h1>
-<a href="login.html"><button>Login</button></a>
+<body class="padding">
+<header class="adjust">
+<div class="icon">
+<img src="images/icon.png" alt="pin image">
+</div>
+<h1 class="header">Pin Me!</h1>
+<div class="buttons">
+<a href="login.html"><button class="button">Log in</button></a>
+</div>
 </header>
+<section class="divider">
+</section>
 <section>
 <form action="home.html">
-<fieldset>
+<fieldset class="signinup postingAd">
+<div>
 	<label>FirstName:<input type="text" name="firstname" id='firstname' placeholder="John"></label>
+	</div><div>
 	<label>LastName:<input type="text" name="lastname" id="lastname" placeholder="Max"></label>
+		</div><div>
 	<label>Perferred UserName:<input type="text" name="username" id="username" placeholder="Maxjohn"></label>
+		</div><div>
 	<label>Password:<input type="password" name="password" id="password" placeholder="xxxx"></label>
+		</div><div>
 	<label>Confirm Password:<input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Your Password"></label>
-<button type="submit">Signup</button>
+		</div><div>
+<button type="submit" class="button">Signup</button>
+</div>
 	</fieldset>
 </form>
+<footer>
+@CopyRights:Pin Me <br>
+ developed by Prathyusha Rani,Prathyusha,Shiva & Divya
+</footer>
 </body>
 </html>

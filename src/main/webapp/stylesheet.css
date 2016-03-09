@@ -6,108 +6,212 @@
     margin: 0%;
 }
 
-.account{
-	background:transparent;
-	border:none;
-}
-.account i{
-font-size: 20px;	
+.account {
+    background: transparent;
+    border: none;
+    width: 100px;
+    height: 100px;
 }
 
-.user:hover .user-content{
-display: block;
+.account i {
+    font-size: 50px;
+    background-color: #C0CA33;
+    padding: 10px;
+    border-radius: 5px;
 }
-.user-content{
-	max-width: 200px;
-	display: none;	
+
+.user {
+    float: right;
+    position: relative;
+    top: -100px;
 }
+
+.user:hover .user-content {
+    display: block;
+}
+
+.user-content {
+    max-width: 400px;
+    display: none;
+    top: -50px;
+}
+
 .user-content ul {
-	list-style-type: none;	
-	display: block;
-}
-.user-content ul li:hover{
-	background-color: green;
-	font-size: 20px;
+    list-style-type: none;
+    display: block;
+    margin-right: 25px;
 }
 
-.user-content a{
-	text-decoration: none;
-	color: black;
-}
-.searchbar{
-	width: 200px;
-	border-radius: 5px;
-	font-size: 15px;
+.user-content ul li{
+    background-color: #C0CA33;
+    font-size: 15px;
+    color: #1B5E20;
+    padding: 20px;
 }
 
-.login{
-background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("images/login.jpg");
-background-size: 100%;
-background-repeat: no-repeat;
-color: #D4E157;
-font-size: 20px;
-font-style: bold;
-width: 100%;
-padding: 0px;
+.user-content ul li:hover {
+    background-color: #004D40;
+    color: #76FF03;
+    font-size: 20px;
 }
-.login::after{
-	 display: block;
+
+.user-content a {
+    text-decoration: none;
+    color: black;
+}
+
+.user-content a:hover{
+	 text-decoration: none;
+color: #76FF03;
+}
+
+.searchbar {
+    width: 200px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.login {
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("images/login.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: #D4E157;
+    font-size: 20px;
+    font-style: bold;
+    width: 100%;
+    padding: 0px;
+}
+
+.login::after {
+    display: block;
     clear: both;
     content: " ";
 }
 
 .header {
-    background: -webkit-linear-gradient(#0097A7,#004D40,#004D28);
+    background: -webkit-linear-gradient(#0097A7, #004D40, #004D28);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: Mistral;
     font-size: 40px;
 }
 
-.button{
-	background-color: #C0CA33;
-	font-size: 15px;
-	color: #1B5E20;
-	padding: 15px;
-	border-radius: 10px;
-	border-style: none;
-}
-.button:hover{
-	background-color: #004D40;
-	color: #64DD17;
-}
-.buttons{
-	position: relative;
-	float: right;
-     margin-top: -10%;
-     margin-left: 2%;
-     padding: 0% 6%;
-    font-size: 20px;
-     overflow: hidden;
-}
-.icon{
-	float: left;
-	border-radius: 15px;
-}
-.icon img {
-	width: 50px;
-height: 50px;
+.button {
+    background-color: #C0CA33;
+    font-size: 15px;
+    color: #1B5E20;
+    padding: 15px;
+    border-radius: 10px;
+    border-style: none;
 }
 
-.divider{
-	 background: -webkit-linear-gradient(#F0F4C3,#DCE775,#33691E,#00796B);
-height: 5px;
+.button:hover {
+    background-color: #004D40;
+    color: #64DD17;
 }
-header::after{
-	display: block;
+
+.buttons {
+    position: relative;
+    float: right;
+    margin-top: -7%;
+    margin-left: 2%;
+    padding: 0% 6%;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+.icon {
+    float: left;
+    border-radius: 15px;
+}
+
+.icon img {
+    width: 50px;
+    height: 50px;
+}
+
+.divider {
+    background: -webkit-linear-gradient(#F0F4C3, #DCE775, #33691E, #00796B);
+    height: 5px;
+}
+
+.adjust {
+    height: 75px;
+}
+
+.postingAd {
+    padding: 30px;
+    width: 500px;
+    margin: 30px;
+    margin-left: 250px;
+    border-radius: 25px;
+    font-size: 20px;
+}
+
+.postingAd {
+    padding: 30px 50px;
+}
+
+.postingAd div {
+    padding: 5px;
+}
+
+.postingAd input {
+    margin: 1px 30px;
+    font-size: 15px;
+}
+
+.submit {
+    float: left;
+    margin: 15px;
+    width: 100px;
+}
+
+.reset {
+    float: right;
+    margin: 15px;
+    width: 100px;
+}
+
+header::after {
+    display: block;
     clear: both;
     content: " ";
 }
 
-footer{
-	background-color: #7CB342;
-	position: absolute;
-	bottom: 0px;
-	width: 100%;
-	height: 25px;
+footer {
+    background-color: #7CB342;
+    position: relative !important;
+    bottom: 0px;
+    width: 100%;
+    height: 35px;
+    z-index: -3;
+}
+
+.signinup {
+    width: 400px;
+    text-align: right;
+}
+
+.signinup div {
+    font-size: 15px;
+    padding: 20px;
+}
+
+.signinup input {
+    font-size: 15px;
+    padding: 5px 15px;
+    margin: 3px 15px;
+}
+
+.select:hover {
+    background: #7CB342;
+}
+
+.select option {
+    background: #7CB342;
+}
+
+.limit {
+    display: none;
 }
