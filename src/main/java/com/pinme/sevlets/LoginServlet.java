@@ -67,5 +67,6 @@ public class LoginServlet extends HttpServlet {
 			response.setContentType("text/html");
 			request.getRequestDispatcher("index.html").forward(request, response);
 		}
+
 	}
 }

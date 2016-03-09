@@ -48,6 +48,7 @@
     font-size: 15px;
     color: #1B5E20;
     padding: 20px;
+     box-shadow: 10px 10px 5px #888888;
 }
 
 .user-content ul li:hover {
@@ -81,6 +82,7 @@ color: #76FF03;
     font-style: bold;
     width: 100%;
     padding: 0px;
+    height: 500px;
 }
 
 .login::after {
@@ -88,6 +90,25 @@ color: #76FF03;
     clear: both;
     content: " ";
 }
+.loginfield{
+    width: 400px;
+    float: right;
+    margin: 25px 40px;
+    text-align: right;
+    border-radius: 15px;
+}
+.loginfield div{
+    padding:10px;
+    font-size: 20px;
+}
+
+.loginfield div input{
+    font-size: 17px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
 
 .header {
     background: -webkit-linear-gradient(#0097A7, #004D40, #004D28);
@@ -192,7 +213,7 @@ footer {
 }
 
 .signinup {
-    width: 500px;
+    width: 400px;
     text-align: right;
 }
 
@@ -221,6 +242,7 @@ footer {
 #error{
     color: red;
 }
+
 
 .event {
     width: 100%;
@@ -259,4 +281,102 @@ footer {
     vertical-align: middle;
 }
 
+
+
+
+
+#couponlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul#couponlist:before, ul#couponlist:after {
+    display: block;
+    content: " ";
+    clear: both;
+}
+
+#couponlist li {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 15px;
+    float: left;
+    text-align: center;
+    padding:20px;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 5px;
+}
+
+#couponlist li img{
+    width: 140px;
+    height: 120px;
+}
+
+.coupons ul li{
+    z-index: -1;
+    opacity: 0.5;
+
+}
+.navigation ul{
+    list-style-type: none;
+     background-color: #C0CA33;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.navigation li{
+   float: left;
+}
+
+.navigation li a:hover {
+    background-color: #004D40;
+    color: #64DD17;
+}
+
+.navigation li a {
+    display: inline-block;
+    color: #1B5E20;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+
+#aboutus{
+    padding:100px;
+    margin:10px;
+    font-size: 20px;
+    font-family: Zapfino;
+    background-color: #F0F4C3;
+    font-weight: bold;
+}
+#contact{
+    margin:10px 5px;
+    padding: 50px 10px;
+     font-weight: bold;
+     font-family: chalkboard;
+     background-color: #F0F4C3;
+     font-size: 20px;
+
+}
+
+#contact fieldset{
+    border-radius: 20px;
+}
+#contact fieldset textarea{
+    border-radius: 20px;
+
+}
+
+.set{
+    width: 100px;
+    margin: 10px 100px;
+}
 

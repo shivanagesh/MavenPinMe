@@ -26,8 +26,20 @@ public class SignUp extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String confirmpassword = request.getParameter("confirmpassword");
+		String email = request.getParameter("email");
+		
+		response.setContentType("text/html");
+		request.getRequestDispatcher("home.html").forward(request, response);
+		
+
 	}
 
 	/**
