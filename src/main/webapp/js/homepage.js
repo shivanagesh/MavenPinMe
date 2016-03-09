@@ -138,8 +138,8 @@ function getRandomColor() {
 function imagesid(data) {
     if (data.category.toLowerCase() == "food") {
         var number = Math.floor(Math.random() * 5);
-    } else if (data.category.toLowerCase() == "Entertainment") {
-        var number = Math.floor(Math.random() * 4);
+    } else if (data.category.toLowerCase() == "entertainment") {
+        var number = Math.floor((Math.random() * 4));
     } else if (data.category.toLowerCase() == "recreation") {
         var number = Math.floor(Math.random() * 3);
     } else {
@@ -152,7 +152,12 @@ function loadData() {
 
     for (var i = 0; i < data.length; i++) {
         var number = imagesid(data[i]);
+       
+        if(data[i].category == "Entertainment" ){
+        	var imgsrc="e";
+        }else{
         var imgsrc = data[i].category.toLowerCase();
+        }
         var imgdata = imgsrc + number;
         var txt = '<li id="elem' + i + '"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
 
