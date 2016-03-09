@@ -1,14 +1,14 @@
-var element= [
-{
-	name:item1;
-	desc:hello;
-},{
-	name:item2;
-	desc:hello2;
-},{
-	name:item3;
-	desc:hell03;
-},{
-	name:item4;
-	desc:hello4;
-}]
+//VAR ELEMENT= [
+//{
+//	NAME:ITEM1;
+//	DESC:HELLO;
+//},{
+//	NAME:ITEM2;
+//	DESC:HELLO2;
+//},{
+//	NAME:ITEM3;
+//	DESC:HELL03;
+//},{
+//	NAME:ITEM4;
+//	DESC:HELLO4;
+//}]
