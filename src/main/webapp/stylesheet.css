@@ -1,4 +1,4 @@
-.padding {
+1.padding {
     background: #FEFEFA;
     color: black;
     overflow-x: hidden;
@@ -47,6 +47,7 @@
     font-size: 15px;
     color: #1B5E20;
     padding: 20px;
+     box-shadow: 10px 10px 5px #888888;
 }
 
 .user-content ul li:hover {
@@ -191,7 +192,7 @@ footer {
 }
 
 .signinup {
-    width: 500px;
+    width: 400px;
     text-align: right;
 }
 
@@ -219,4 +220,39 @@ footer {
 }
 #error{
     color: red;
+}
+
+
+
+#couponlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul#couponlist:before, ul#couponlist:after {
+    display: block;
+    content: " ";
+    clear: both;
+}
+
+#couponlist li {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 15px;
+    float: left;
+    text-align: center;
+    padding:20px;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 5px;
+}
+
+#couponlist li img{
+    width: 140px;
+    height: 120px;
 }
