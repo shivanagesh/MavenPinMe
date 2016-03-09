@@ -4,14 +4,7 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>signup</servlet-name>
-  	<display-name>signup</display-name>
-  	<description></description>
-  	<servlet-class>com.pinme.sevlets.signup</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>signup</servlet-name>
-  	<url-pattern>/signup</url-pattern>
-  </servlet-mapping>
+  <welcome-file-list>  
+   <welcome-file>Dashboard.html</welcome-file> 
+  </welcome-file-list>  
 </web-app>

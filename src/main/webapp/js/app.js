@@ -6,3 +6,20 @@ $("#limit").css("display","block");
 	$("#limit").css("display","none");
 }
 }
+
+function checkpsd(){
+	var psd = document.getElementById('password').value;
+var cpsd = document.getElementById('confirmpassword').value;
+if(psd !== cpsd){
+	  document.getElementById("error").innerHTML = "Confirm Password mismatch";
+}
+}
+
+function validateForm(){
+	var userName = document.getElementById("userName").value;
+	var Password = document.getElementById("Password").value;
+if(((userName ==null ) || (userName == "")) ||((Password == null) || (Password == ""))){
+return false;
+}
+return true;
+}

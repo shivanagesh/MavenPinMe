@@ -3,6 +3,7 @@
 <head>
 	 <link rel="icon" href="images/pinfavicon.ico" />
 	 <link rel="stylesheet" href="stylesheet.css"/>
+		<script src="js/jquery-1.12.1.min.js"></script>
     <title>Pin Me</title>
 </head>
 <body class="padding">
@@ -19,7 +20,7 @@
 <section class="divider">
 </section>
 <section class="login">
-<form action="home.html">
+<form action="LoginServlet" method="Post" onsubmit="return validateForm()" >
 <div>
 <label>User Name:<input type="text" name="userName" id="userName" placeholder="John"></label>
 </div><div>
@@ -35,6 +36,7 @@
 </ul>
 </section>
 </section>
+<script src="js/app.js"></script>
 <footer>
 @CopyRights:Pin Me <br>
  developed by Prathyusha Rani,Prathyusha,Shiva & Divya
