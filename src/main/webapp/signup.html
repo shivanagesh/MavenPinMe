@@ -18,8 +18,8 @@
 <section class="divider">
 </section>
 
-<form action="SignUp" method="post" >
-<fieldset class="signinup postingAd">
+<form action="SignUp" method="post" onsubmit="return validationSignup()" >
+<fieldset class="signinup validationSignup">
 <div id="error"></div>
 <div>
 	<label>FirstName:<sup>*</sup><input type="text" name="firstname" id='firstname' placeholder="John" required></label>

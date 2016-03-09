@@ -21,7 +21,7 @@
 }
 
 .user {
-        float: right;
+    float: right;
     position: absolute;
     right: 0px;
     top: -3px;
@@ -211,16 +211,19 @@ sup{
 }
 footer {
     background-color: #7CB342;
-    text-align: center;
-    position: fixed;
-    bottom: 10px;
+    position: fixed !important;
+    bottom: 0px;
     width: 100%;
+    height: 35px;
+    text-align:center;
     z-index: 0;
+      margin:20px 0px 0px 0px;
 }
 
 .signinup {
-    width: 400px;
+    width: 75%;
     text-align: right;
+    margin-bottom:40px;
 }
 
 .signinup div {

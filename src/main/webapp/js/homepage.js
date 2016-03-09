@@ -155,7 +155,9 @@ function loadData() {
        
         if(data[i].category == "Entertainment" ){
         	var imgsrc="e";
-        }else{
+        }else if(data[i].category == "Clothing" ){
+        	var imgsrc="c";
+        	}else{
         var imgsrc = data[i].category.toLowerCase();
         }
         var imgdata = imgsrc + number;

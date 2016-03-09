@@ -25,6 +25,12 @@ function validateForm() {
 }
 
 function validationSignup() {
+	var firstname = document.getElementById("firstname").value;
+	var lastname = document.getElementById("lastname").value;
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	var confirmpassword = document.getElementById("confirmpassword").value;
+	var email = document.getElementById("email").value;
     if (((firstname == null) || (firstname == "")) ||
         ((lastname == null) || (lastname == "")) ||
         ((username == null) || (username == "")) ||
