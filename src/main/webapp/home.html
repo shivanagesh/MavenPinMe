@@ -2,10 +2,7 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="icon" href="images/pinfavicon.ico" />
+  <link rel="import" href="import.html">
     <title>Pin Me</title>
 </head>
 <body class="padding">
@@ -29,8 +26,8 @@
     </header>
     <section class="divider">
 </section>
-    <section>
-      <label>Catergory
+    <section style="float: right;">
+      <label>Catergory </label>
   <select name="Catergory">
    <option value="None selected">Please select below</option>
     <option value="Food">Food</option>
@@ -38,13 +35,40 @@
     <option value="Entertainment">Entertainment</option>
     <option value="recreation">recreation</option>
    </select>
-   </label>
+  
     </section>
-    <section class="coupon">
-        <ul>
-            <li>Item1</li>
-            <li>item2</li>
-        </ul>
+    <section class="events">
+        <p class="event_titles">Events</p>
+	<div class="container " style="    margin-top: 10px;
+    ">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="event" data-href="">
+				<div class="event-photo">
+					<img src="images/icon.png">
+				</div>
+				<div class="event-info">
+					<h5 class="event-name">Free meal</h5>
+					<p class="event-date">March 21, 2016 @411 Santa Clara</p>
+				</div>
+				<div class="cta-wrapper hide-for-small">
+					<a href="" class="button primary medium">Pin me</a>
+				</div>
+			</div>
+			<div class="event" data-href="">
+				<div class="event-photo">
+					<img src="images/icon.png">
+				</div>
+				<div class="event-info">
+					<h5 class="event-name">Cloths distribution</h5>
+					<p class="event-date">March 21, 2016 @411 Santa Clara</p>
+				</div>
+				<div class="cta-wrapper hide-for-small">
+					<a href="" class="button primary medium">Pin me</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
    </section>
     <footer>
 @CopyRights:Pin Me <br>
