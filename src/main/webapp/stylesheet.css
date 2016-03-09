@@ -35,7 +35,13 @@
     display: none;
     top: -50px;
 }
-
+.user:hover .user-content {
+    display: block;
+    position: absolute;
+    top: 96px;
+    right: -10px;
+    width: 200px;
+}
 .user-content ul {
     list-style-type: none;
     display: block;
