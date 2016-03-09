@@ -390,3 +390,6 @@ ul#couponlist:before, ul#couponlist:after {
     margin: 10px 100px;
 }
 
+.category{
+	float: right;
+}
