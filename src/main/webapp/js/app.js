@@ -1,29 +1,27 @@
-function setLimit(){
-var selected = document.querySelector("#settinglimit").value;
-if(selected === "yes"){
-$("#limit").css("display","block");
-}else{
-	$("#limit").css("display","none");
-}
-}
-
-function checkpsd(){
-	var psd = document.getElementById('password').value;
-var cpsd = document.getElementById('confirmpassword').value;
-if(psd !== cpsd){
-	  document.getElementById("error").innerHTML = "Confirm Password mismatch";
-}else if(psd == cpsd){
-	$("#error").css("display","none");
-}
+function setLimit() {
+    var selected = document.querySelector("#settinglimit").value;
+    if (selected === "yes") {
+        $("#limit").css("display", "block");
+    } else {
+        $("#limit").css("display", "none");
+    }
 }
 
-function validateForm(){
-	var userName = document.getElementById("userName").value;
-	var Password = document.getElementById("Password").value;
-if(((userName ==null ) || (userName == "")) ||((Password == null) || (Password == ""))){
-return false;
+function checkpsd() {
+    var psd = document.getElementById('password').value;
+    var cpsd = document.getElementById('confirmpassword').value;
+    if (psd !== cpsd) {
+        document.getElementById("error").innerHTML = "Confirm Password mismatch";
+    }
 }
-return true;
+
+function validateForm() {
+    var userName = document.getElementById("userName").value;
+    var Password = document.getElementById("Password").value;
+    if (((userName == null) || (userName == "")) || ((Password == null) || (Password == ""))) {
+        return false;
+    }
+    return true;
 }
 
 function validationSignup() {
@@ -38,3 +36,4 @@ function validationSignup() {
     }
     return true;
 }
+

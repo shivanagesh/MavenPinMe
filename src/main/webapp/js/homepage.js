@@ -82,7 +82,7 @@ function getRandomColor() {
 function imagesid(data) {
     if (data.category.toLowerCase() == "food") {
         var number = Math.floor(Math.random() * 5);
-    } else if (data.category.toLowerCase() == "Entertainment") {
+    } else if (data.category.toLowerCase() == "entertainment") {
         var number = Math.floor((Math.random() * 3 )+1);
     } else if (data.category.toLowerCase() == "recreation") {
         var number = Math.floor(Math.random() * 3);
