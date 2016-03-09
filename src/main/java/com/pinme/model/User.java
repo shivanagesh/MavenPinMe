@@ -19,6 +19,20 @@ public class User {
 	 * @param lastName
 	 * @param password
 	 * @param email
+	 * 
+	 */
+	public User(String firstName, String lastName, String password, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+	}
+	
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 * @param email
 	 * @param phoneNumber
 	 */
 	public User(String firstName, String lastName, String password, String email, String phoneNumber) {
