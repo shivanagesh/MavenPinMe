@@ -2,6 +2,7 @@ package com.pinme.sevlets;
 
 import java.io.IOException;
 
+
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -39,28 +40,31 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String username=request.getParameter("userName");
+		String password=request.getParameter("Password");
+		
+		response.setContentType("text/html");
+		request.getRequestDispatcher("home.html").forward(request, response);
+		
+//		 response.setContentType("application/json");
+//	     PrintWriter out = response.getWriter();
+//	     out.println(username);
+//	     out.println(password);
+//	     
+//	     if(UserController.getInstance().authenticate(username, password))
+//	     {
+//		String jsonInString = JSonMapperSingleTon.getInstance().writeValueAsString((UserController.getInstance().getUser(username, password)));
+//		System.out.println(jsonInString);
+//		out.println(jsonInString);
+//	    	 }
+//		
+		
+		
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String username=request.getParameter("username");
-		String passowrd=request.getParameter("password");
-		
-		
-		
-		 response.setContentType("application/json");
-	     PrintWriter out = response.getWriter();
-	     
-	     if(UserController.getInstance().authenticate(username, passowrd))
-	     {
-		String jsonInString = JSonMapperSingleTon.getInstance().writeValueAsString((UserController.getInstance().getUser(username, passowrd)));
-		System.out.println(jsonInString);
-		out.println(jsonInString);
-	    	 }
-		
-		
-		
+		doGet(request,response);
 	}
-
 }

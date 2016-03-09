@@ -141,7 +141,7 @@ color: #76FF03;
 
 .postingAd {
     padding: 30px;
-    width: 500px;
+    width: 550px;
     margin: 30px;
     margin-left: 250px;
     border-radius: 25px;
@@ -178,7 +178,9 @@ header::after {
     clear: both;
     content: " ";
 }
-
+sup{
+    color: red;
+}
 footer {
     background-color: #7CB342;
     text-align: center;
@@ -190,7 +192,7 @@ footer {
 }
 
 .signinup {
-    width: 400px;
+    width: 500px;
     text-align: right;
 }
 
@@ -215,4 +217,7 @@ footer {
 
 .limit {
     display: none;
+}
+#error{
+    color: red;
 }

@@ -2,3 +2,4 @@ target/*
 
 ._*
 .~lock.*
+/target/
