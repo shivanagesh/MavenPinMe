@@ -17,8 +17,8 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pinme.controllers.UserController;
-import com.pinme.model.User;
 import com.pinme.util.JSonMapperSingleTon;
+
 
 /**
  * Servlet implementation class LoginServlet
@@ -46,18 +46,18 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		request.getRequestDispatcher("home.html").forward(request, response);
 		
-//		 response.setContentType("application/json");
-//	     PrintWriter out = response.getWriter();
-//	     out.println(username);
-//	     out.println(password);
-//	     
-//	     if(UserController.getInstance().authenticate(username, password))
-//	     {
-//		String jsonInString = JSonMapperSingleTon.getInstance().writeValueAsString((UserController.getInstance().getUser(username, password)));
-//		System.out.println(jsonInString);
-//		out.println(jsonInString);
-//	    	 }
-//		
+		 response.setContentType("application/json");
+	     PrintWriter out = response.getWriter();
+	     out.println(username);
+	     out.println(password);
+	     
+	     if(UserController.getInstance().authenticate(username, password))
+	     {
+		String jsonInString = JSonMapperSingleTon.getInstance().writeValueAsString((UserController.getInstance().getUser(username, password)));
+		System.out.println(jsonInString);
+		out.println(jsonInString);
+	    	 }
+		
 		
 		
 	}
