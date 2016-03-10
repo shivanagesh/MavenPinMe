@@ -120,6 +120,9 @@ function newevent(){
 		var r =confirm("This Event is Selected!");
 		if (r == true) {
 			       alert("Token emailed");
+			       $.ajax({url: "Token", success: function(result){
+			    	   alert("Token emailed");
+			       }});
 			 
 		} else {
 		    x = "You pressed Cancel!";
