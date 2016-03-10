@@ -2,10 +2,7 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-     <link rel="icon" href="images/pinfavicon.ico" />
-     <link rel="stylesheet" href="stylesheet.css"/>
+ <link rel="import" href="import.html">
 </head>
 <body class="padding">
 <header>
@@ -27,8 +24,16 @@
             </div>
         </div>
     </header>
-    <section>
-<label><input type="text" class="searchbar" id="searchelement" name="searchelement" placeholder="category name"><i class="fa fa-search"></i></label>
+        <section class="divider">
     </section>
+    <section class="searching">
+<label><input type="text" class="searchbar" id="searchelement" name="searchelement" placeholder="category name" onblur="getEventList()"></label>
+<button onclick="getEventList()"><i class="fa fa-search" onclick="getEventList()"></i></button>
+        <section class="coupon" id="home">
+        <ul id="couponlist">
+        </ul>
+    </section>
+    </section>
+    <script type="text/javascript" src="js/homepage.js"></script>
 </body>
 </html>
