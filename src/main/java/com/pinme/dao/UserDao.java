@@ -30,6 +30,7 @@ public class UserDao extends DBConnect {
 		String sql = "INSERT INTO users(first_name, last_name, password, email, phone, since) VALUES (?, ?, ?, ?,?, ?)";
 		PreparedStatement userInsertStatement = null;
 		try {
+			System.out.println(dbConnection);
 			userInsertStatement = dbConnection.prepareStatement(sql);
 			userInsertStatement.setString(1, user.getFirstName());
 			userInsertStatement.setString(2, user.getLastName());
