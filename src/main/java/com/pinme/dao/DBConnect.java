@@ -13,7 +13,7 @@ public abstract class DBConnect {
 	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/pinme";
 	private static final String DB_USER = "root";
-	private static final String DB_PASSWORD = "root";
+	private static final String DB_PASSWORD = "test1234";
 	public static Connection dbConnection = null;
 	public Statement stmt;
 	public ResultSet rslt;

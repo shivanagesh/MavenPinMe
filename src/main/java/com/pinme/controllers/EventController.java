@@ -11,13 +11,12 @@ import com.pinme.dao.EventDao;
 import com.pinme.dao.TokenDao;
 import com.pinme.dao.UserDao;
 import com.pinme.mail.Mail;
-import com.pinme.model.Address;
-import com.pinme.model.Event;
-import com.pinme.model.Token;
-import com.pinme.model.User;
+import com.pinme.model.*;
 
 /**
  * @author Shivanagesh Chandra Mar 8, 2016 1:14:53 AM fileEventController.java
+ *
+ * @author Chintala Prathyusha, post events and get events by user id
  */
 public class EventController {
 
@@ -45,11 +44,24 @@ public class EventController {
 		}
 		return instance;
 	}
+
+    public List<EventCategory> getEventCategories(){
+        return eventCategory.getCategoriesFromDb();
+    }
+
+    public EventCategory getEventCategoryByName(String categoryName){
+        return eventCategory.getEventCategoryByName(categoryName);
+    }
 	
 	
 	public List<Event> getEvents(){
 		return eventDao.getEvents();
 	}
+
+    public List<Event> getEventsByUserId(int userId){
+        return eventDao.findEventsByUserId(userId);
+
+    }
 
 	public int createEvent(Address ad, int categoryId, Event event) {
 		try {

@@ -1,5 +1,8 @@
 package com.pinme.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -9,10 +12,13 @@ import com.pinme.model.Address;
 
 /**
  * @author Shivanagesh Chandra Mar 7, 2016 11:32:31 PM fileUserDao.java
+ *
+ * @author Prathyusha Chintala, Implemented routine to persist address
  */
-public class AddressDao {
+public class AddressDao extends DBConnect {
 	public static List<Address> addresses = new ArrayList<Address>();
 	private static AtomicInteger uniqueId = new AtomicInteger();
+    Connection dbConnection = getDBConnection();
 
 	/**
 	 * 
@@ -21,10 +27,28 @@ public class AddressDao {
 		
 	}
 
-	public int addAddress(Address Address) {
-		Address.setId(uniqueId.incrementAndGet());
-		addresses.add(Address);
-		return Address.getId();
+	public int addAddress(Address address) {
+        String sql = "INSERT INTO address(street, city, state, zipcoe, country, latitude, longitude) VALUES (?, ?, ?, ?,?, ?, ?)";
+        PreparedStatement addressInsertStmt = null;
+        int id = -1;
+        try {
+            System.out.println(dbConnection);
+            addressInsertStmt = dbConnection.prepareStatement(sql);
+            addressInsertStmt.setString(1, address.getStreet());
+            addressInsertStmt.setString(2, address.getCity());
+            addressInsertStmt.setString(3, address.getState());
+            addressInsertStmt.setString(4, address.getZipcode());
+            addressInsertStmt.setString(5, address.getCountry());
+            addressInsertStmt.setString(6, address.getLatitude());
+            addressInsertStmt.setString(7, address.getLongitude());
+
+            id = addressInsertStmt.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            id = -1;
+        }
+        return id;
 	}
 
 	public void removeAddress(int id) {
