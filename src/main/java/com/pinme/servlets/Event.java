@@ -1,4 +1,4 @@
-        package com.pinme.sevlets;
+        package com.pinme.servlets;
 
         import com.pinme.controllers.EventController;
         import com.pinme.model.Address;
