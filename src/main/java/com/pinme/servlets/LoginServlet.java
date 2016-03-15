@@ -1,4 +1,4 @@
-package com.pinme.sevlets;
+package com.pinme.servlets;
 
 import java.io.IOException;
 

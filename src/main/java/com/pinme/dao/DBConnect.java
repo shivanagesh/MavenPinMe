@@ -11,9 +11,9 @@ public abstract class DBConnect {
 
 	// Declare varibles for driver,username,password and connection url
 	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/pinme";
+	private static final String DB_CONNECTION = "jdbc:mysql://localhost:8889/PinMe";
 	private static final String DB_USER = "root";
-	private static final String DB_PASSWORD = "test1234";
+	private static final String DB_PASSWORD = "root";
 	public static Connection dbConnection = null;
 	public Statement stmt;
 	public ResultSet rslt;
@@ -38,6 +38,7 @@ public abstract class DBConnect {
 			try {
 
 				dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
+//				dbConnection=DriverManager.getConnection(DB_CONNECTION);
 				return dbConnection;
 
 			} catch (SQLException e) {
