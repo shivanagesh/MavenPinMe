@@ -1,40 +1,64 @@
 <!Doctype html>
 <html>
-
 <head>
- <link rel="import" href="import.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="images/pinfavicon.ico" />
+    <title>Pin Me- My Events</title>
 </head>
 <body class="padding">
 <header class="adjust">
-<div class="icon">
-<img src="images/icon.png" alt="pin image">
-</div>
-<h1 class="header">Pin Me!</h1>
-        <div class="user">
-            <button class="account"><i class="fa fa-user fa-3x"></i></button>
-            <div class="user-content">
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="History.html">History</a></li>
-                    <li><a href="postAd.html">Post Event</a></li>
-                    <li><a href="CouponSearch.html">Find Event</a></li>
-                    <li><a href="PostedCoupons.html"> My Events</a> </li>
-                    <li><a href="Logout"> Logout</a> </li>
-                      </ul>
-            </div>
+    <div class="icon">
+        <img src="images/icon.png" alt="pin image">
+    </div>
+    <h1 class="header">Pin Me!</h1>
+    <div class="user">
+        <button class="account"><i class="fa fa-user"></i></button>
+        <div class="user-content">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="History.html">History</a></li>
+                <li><a href="postAd.jsp">Post Event</a></li>
+                <li><a href="CouponSearch.html">Find Event</a></li>
+                <li><a href="/pinme/Event"> My Events</a> </li>
+                <li><a href="Logout"> Logout</a> </li>
+            </ul>
         </div>
-    </header>
-    <section class="divider">
-    </section>
-    <section class="selfish">    
-    <div >Oh God! No post yet! .. Start Posting and Start Sharing Events!<br>
-    <strong>Stop Being selfish</strong></div>
-    </section>
-    <footer>
-        @CopyRights:Pin Me
-        <br> developed by Prathyusha Rani,Prathyusha,Shiva & Divya
-    </footer>
-    <script type="text/javascript" src="js/homepage.js"></script>
-</body>
+    </div>
+</header>
+<section class="divider">
+</section>
+<section>
+    <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th>Event Name</th>
+            <th>Description</th>
+            <th>Start Time</th>
+        </tr>
+        </thead>
+        <tbody>
 
+        <c:forEach items="${sessionScope.userEvents}" var="userEvent">
+            <tr>
+                <th scope="row"> <c:out value="${userEvent.id}"/> </th>
+                <td><c:out value="${userEvent.name}"/></td>
+                <td><c:out value="${userEvent.description}"/></td>
+                <td><c:out value="${userEvent.startDateTime}"/></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
+
+</section>
+<footer>
+    @CopyRights:Pin Me <br>
+    developed by Prathyusha Rani,Prathyusha,Shiva & Divya
+</footer>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
 </html>

@@ -20,9 +20,9 @@
                 <ul>
                     <li><a href="home.html">Home</a></li>
                     <li><a href="History.html">History</a></li>
-                    <li><a href="postAd.html">Post Event</a></li>
+                    <li><a href="postAd.jsp">Post Event</a></li>
                     <li><a href="CouponSearch.html">Find Event</a></li>
-                    <li><a href="PostedCoupons.html"> My Events</a> </li>
+                    <li><a href="/pinme/Event"> My Events</a> </li>
                     <li><a href="Logout"> Logout</a> </li>
                 </ul>
             </div>

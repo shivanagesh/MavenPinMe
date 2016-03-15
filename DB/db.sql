@@ -61,6 +61,14 @@ CREATE TABLE IF NOT EXISTS `event_category` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Creating static event categories
+-- -----------------------------------------------------
+insert into pinme.event_category(name, description) values('Food', "All Food Related Events");
+insert into pinme.event_category(name, description) values('Clothing', "All Clothing Related Events");
+insert into pinme.event_category(name, description) values('Entertainment', "All Entertainment Related Events");
+insert into pinme.event_category(name, description) values('recreation', "All Recreation Related Events");
+
 
 -- -----------------------------------------------------
 -- Table `event`
