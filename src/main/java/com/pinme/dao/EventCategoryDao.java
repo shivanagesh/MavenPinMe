@@ -73,6 +73,12 @@ public class EventCategoryDao extends DBConnect {
 
     }
 
+    public EventCategory getEventCategoryById(int eventCategoryId){
+        List<EventCategory> categories = getCategoriesFromDb();
+        Stream<EventCategory> eventCategory = categories.stream().filter(ec -> ec.getId() == eventCategoryId);
+        return eventCategory.findFirst().get();
+    }
+
     public EventCategory getEventCategoryByName(String categoryName){
         if(categoryName != null){
             // I see just 4 categories; it's ok to get all of them to memory

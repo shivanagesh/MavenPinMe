@@ -20,7 +20,7 @@
                 <div class="user-content">
                     <ul>
                        <li><a href="home.jsp">Home</a></li>
-                        <li><a href="History.jsp">History</a></li>
+                       <li><a href="History.jsp">History</a></li>
                         <li><a href="postAd.jsp">Post Event</a></li>
                         <li><a href="CouponSearch.jsp">Find Event</a></li>
                         <li><a href="/pinme/Event"> My Events</a> </li>

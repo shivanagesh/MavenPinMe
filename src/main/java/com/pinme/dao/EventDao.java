@@ -55,6 +55,34 @@
             return eventId;
         }
 
+        public List<Event> findAllEventsFromDB(){
+            List<Event> allEvents = new ArrayList<Event>();
+            String sql = "Select * from event";
+            PreparedStatement eventsQueryStmt = null;
+            try{
+                eventsQueryStmt = dbConnection.prepareStatement(sql);
+                ResultSet rs = eventsQueryStmt.executeQuery();
+                while (rs.next()) {
+                    Event event = new Event();
+                    event.setId(rs.getInt("id"));
+                    event.setAddressId(rs.getInt("address_id"));
+                    event.setUserId(rs.getInt("user_id"));
+                    event.setCategoryId(rs.getInt("event_category"));
+                    event.setTokenized(rs.getBoolean("is_tokenized"));
+                    event.setTokenLimit(rs.getInt("token_limit"));
+                    event.setDescription(rs.getString("description"));
+                    event.setStartDateTime(rs.getString("start_time"));
+                    event.setEndDateTime(rs.getString("end_time"));
+                    event.setName(rs.getString("name"));
+                    allEvents.add(event);
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            return allEvents;
+
+        }
+
         public List<Event> findEventsByUserId(int userId){
             List<Event> userEvents = new ArrayList<Event>();
             if(userId > 0) {
