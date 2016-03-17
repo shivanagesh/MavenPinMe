@@ -2,6 +2,7 @@ package com.pinme.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.pinme.model.Address;
+import com.pinme.model.Event;
 
 /**
  * @author Shivanagesh Chandra Mar 7, 2016 11:32:31 PM fileUserDao.java
@@ -63,12 +65,33 @@ public class AddressDao extends DBConnect {
 	}
 
 	public Address getAddress(int addressId) {
-		for (Address address : addresses) {
-			if (address.getId() == addressId) {
-				return address;
-			}
-		}
-		return null;
+        List<Address> addressList = new ArrayList<Address>();
+
+            String sql = "Select * from address where id=?";
+            PreparedStatement addressQueryStmt = null;
+            try{
+                addressQueryStmt = dbConnection.prepareStatement(sql);
+                addressQueryStmt.setInt(1, addressId);
+                ResultSet rs = addressQueryStmt.executeQuery();
+                while (rs.next()) {
+                   Address address = new Address();
+                    address.setId(rs.getInt("id"));
+                    address.setStreet(rs.getString("street"));
+                    address.setCity(rs.getString("city"));
+                    address.setState(rs.getString("state"));
+                    address.setZipcode(rs.getString("zipcoe"));
+                    address.setCountry(rs.getString("country"));
+                    address.setLatitude(rs.getString("latitude"));
+                    address.setLongitude(rs.getString("longitude"));
+                    addressList.add(address)  ;
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+        return addressList.get(0);
+
 	}
 
 	public void updateAddress(int AddressId, Address updateAddress) {

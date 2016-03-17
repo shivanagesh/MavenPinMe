@@ -18,10 +18,11 @@
             <button class="account"><i class="fa fa-user fa-3x"></i></button>
             <div class="user-content">
                 <ul>
-             <li><a href="home.html">Home</a></li>
-                    <li><a href="History.html">History</a></li>
+             <li>
+                    <li><a href="home.jsp">Home</a></li>
+                    <li><a href="History.jsp">History</a></li>
                     <li><a href="postAd.jsp">Post Event</a></li>
-                    <li><a href="CouponSearch.html">Find Event</a></li>
+                    <li><a href="CouponSearch.jsp">Find Event</a></li>
                     <li><a href="/pinme/Event"> My Events</a> </li>
                     <li><a href="Logout"> Logout</a> </li>
                       </ul>

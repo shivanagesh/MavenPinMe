@@ -77,7 +77,10 @@
 </body>
 <script>
 	$(document).ready(function() {
-		indexloadData();
+        $.getJSON( "Event", function( data ) {
+            indexloadData(data);
+        });
+
 	});
 </script>
 </html>
