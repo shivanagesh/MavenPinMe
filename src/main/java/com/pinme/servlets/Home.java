@@ -78,6 +78,8 @@ public class Home extends HttpServlet {
 			
 		}
 		response.getWriter().write(JSonMapperSingleTon.getInstance().writeValueAsString(jsonlist));
+		
+		
 	}
 
 	/**

@@ -18,10 +18,10 @@
             <button class="account"><i class="fa fa-user"></i></button>
             <div class="user-content">
                 <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="History.html">History</a></li>
+                    <li><a href="home.jsp">Home</a></li>
+                    <li><a href="History.jsp">History</a></li>
                     <li><a href="postAd.jsp">Post Event</a></li>
-                    <li><a href="CouponSearch.html">Find Event</a></li>
+                    <li><a href="CouponSearch.jsp">Find Event</a></li>
                     <li><a href="/pinme/Event"> My Events</a> </li>
                     <li><a href="Logout"> Logout</a> </li>
                 </ul>
@@ -30,9 +30,10 @@
     </header>
     <section class="divider">
 </section>
+<form name="form1" action="Check" method="Post">
     <section class="category">
       <label>Catergory </label>
-  <select name="Catergory">
+  <select name="Catergory" id="Catergory" onchange="document.form1.submit()">
    <option value="None selected">Please select below</option>
     <option value="Food">Food</option>
     <option value="Clothing">Clothing</option>
@@ -40,7 +41,7 @@
     <option value="recreation">recreation</option>
    </select>
     </section>
-
+</form>
     <section class="coupon">
         <ul id="couponlist">
         </ul>
@@ -55,6 +56,13 @@
     $(document).ready(function(){
 	loadData();
 });
+/* var selected;
+$('#Catergory').change(function(event){
+	selected=$(this).val();
+	alert("you have selected"+selected)});
+	var selecting=document.getElementById("Catergory");
+	var value=selecting.options[selecting.selectedIndex].text;
+	alert("value using javascript"+value); */
     </script>
 </body>
 

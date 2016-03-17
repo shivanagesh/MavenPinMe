@@ -48,6 +48,7 @@ public class EventController {
     public List<EventCategory> getEventCategories(){
         return eventCategory.getCategoriesFromDb();
     }
+    
 
     public EventCategory getEventCategoryByName(String categoryName){
         return eventCategory.getEventCategoryByName(categoryName);

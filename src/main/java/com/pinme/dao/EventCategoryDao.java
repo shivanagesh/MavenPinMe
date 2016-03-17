@@ -84,6 +84,7 @@ public class EventCategoryDao extends DBConnect {
             return null;
         }
     }
+    
     public List<EventCategory> getCategoriesFromDb(){
         String sql = "Select * from event_category";
         List<EventCategory> eventCategoryList = new ArrayList<EventCategory>();

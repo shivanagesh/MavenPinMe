@@ -2,10 +2,7 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="stylesheet.css"/>
-    <link rel="icon" href="images/pinfavicon.ico" />
+<%@ include file="import.jsp"%>
     <title>Pin Me</title>
 </head>
 <body class="padding">
@@ -34,9 +31,6 @@
     <section class="setting">
         <div>Your Past Coupons Are</div>
         <ul class="past">
-            <li>Mission Trekking</li>
-            <li>Russel Peter</li>
-            <li>Cycling to SFO via CA-1</li>
         </ul>
     </section>
     <footer>
