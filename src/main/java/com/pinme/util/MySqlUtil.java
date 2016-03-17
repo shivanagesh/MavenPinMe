@@ -26,4 +26,28 @@
                 return null;
 
             }
+
+            public static String getDate(String mySqlDate){
+                try{
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    java.util.Date sqlDate = sdf.parse(mySqlDate);
+                    String mySqlDateStr = new SimpleDateFormat("MM/dd/yyyy").format(sqlDate);
+                    return mySqlDateStr;
+                }  catch(Exception e){
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            public static String getTime(String mySqlDate){
+                try{
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    java.util.Date sqlDate = sdf.parse(mySqlDate);
+                    String mySqlDateStr = new SimpleDateFormat("HH:mm").format(sqlDate);
+                    return mySqlDateStr;
+                }  catch(Exception e){
+                    e.printStackTrace();
+                }
+                return null;
+            }
         }

@@ -52,15 +52,24 @@ public class EventController {
     public EventCategory getEventCategoryByName(String categoryName){
         return eventCategory.getEventCategoryByName(categoryName);
     }
+
+    public EventCategory getEventCategoryById(int categoryId){
+        return eventCategory.getEventCategoryById(categoryId);
+    }
+
 	
 	
 	public List<Event> getEvents(){
-		return eventDao.getEvents();
+		return eventDao.findAllEventsFromDB();
 	}
 
     public List<Event> getEventsByUserId(int userId){
         return eventDao.findEventsByUserId(userId);
 
+    }
+
+    public Address getEventAddress(Event event){
+        return address.getAddress(event.getAddressId());
     }
 
 	public int createEvent(Address ad, int categoryId, Event event) {
