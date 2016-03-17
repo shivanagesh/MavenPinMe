@@ -1,15 +1,15 @@
 <!Doctype html>
 <html>
 <head>
-<link rel="icon" href="images/pinfavicon.ico" />
- <link rel="import" href="import.html">
+    <%@ include file="import.jsp" %>
+      <%@ include file="header.jsp" %>
 </head>
 <body class="padding">
-<header>
+<!-- <header>
 <div class="icon">
 <img src="images/icon.png" alt="pin image">
-</div>
-<h1 class="header">Pin Me!</h1>
+</div> -->
+<!-- <h1 class="header">Pin Me!</h1>
         <div class="user">
             <button class="account"><i class="fa fa-user"></i></button>
             <div class="user-content">
@@ -23,12 +23,14 @@
                 </ul>
             </div>
         </div>
-    </header>
+    </header> -->
         <section class="divider">
     </section>
     <section class="searching">
-<label><input type="text" class="searchbar" id="searchelement" name="searchelement" placeholder="category name" onblur="getEventList()"></label>
-<button onclick="getEventList()"><i class="fa fa-search" onclick="getEventList()"></i></button>
+    <form name="form1" action="Search" method="post">
+<label><input type="text" class="searchbar" id="searchelement" name="searchelement" placeholder="category name" onblur="document.form1.submit()"></label>
+<button onclick="getEventList()"><i class="fa fa-search" onclick="document.form1.submit()"></i></button>
+</form>
         <section class="coupon" id="home">
         <ul id="couponlist">
         </ul>
