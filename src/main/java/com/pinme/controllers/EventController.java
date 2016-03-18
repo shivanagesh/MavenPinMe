@@ -64,6 +64,10 @@ public class EventController {
 		return eventDao.findAllEventsFromDB();
 	}
 
+    public List<Event> getPinnedEvents(int userId){
+        return eventDao.getPinnedEventsByUserId(userId);
+    }
+
     public List<Event> getEventsByUserId(int userId){
         return eventDao.findEventsByUserId(userId);
 
@@ -95,8 +99,11 @@ public class EventController {
 		}
 	}
 	
-	public void pinEvent(int userid,int eventId) {
+	public int pinEvent(int userid,int eventId) {
+        int result = -1;
 		try {
+
+            result = eventDao.pinEvent(userid, eventId);
 //			if(eventDao.getEvent(eventId).isTokenized()){
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			Date date = new Date();
@@ -112,6 +119,7 @@ public class EventController {
 			} catch (Exception e) {
 			e.printStackTrace();
 		}
+        return result;
 	}
 	
 	

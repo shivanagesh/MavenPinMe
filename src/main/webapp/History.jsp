@@ -21,7 +21,7 @@
                     <li><a href="History.jsp">History</a></li>
                     <li><a href="postAd.jsp">Post Event</a></li>
                     <li><a href="CouponSearch.jsp">Find Event</a></li>
-                    <li><a href="/pinme/Event"> My Events</a> </li>
+                    <li><a href="myevents.jsp"> My Events</a> </li>
                     <li><a href="Logout"> Logout</a> </li>
                       </ul>
             </div>

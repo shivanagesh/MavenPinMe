@@ -3,6 +3,7 @@ package com.pinme.servlets;
 import com.pinme.controllers.EventController;
 import com.pinme.model.Address;
 import com.pinme.model.*;
+import com.pinme.util.EventUtil;
 import com.pinme.util.MySqlUtil;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -39,26 +40,10 @@ public class Event extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<com.pinme.model.Event> userEvents = EventController.getInstance().getEvents();
         response.setContentType("text/json");
-        response.getWriter().write(populateJsonFromEvents(userEvents));
+        response.getWriter().write(EventUtil.populateJsonFromEvents(userEvents));
     }
 
-    private String populateJsonFromEvents(List<com.pinme.model.Event> events){
-        JSONArray jsonArray = new JSONArray();
-        events.stream().map(event -> {
-            JSONObject eventObj = new JSONObject();
-            Address address = EventController.getInstance().getEventAddress(event);
-            EventCategory eventCategory = EventController.getInstance().getEventCategoryById(event.getCategoryId());
-            eventObj.put("Name", event.getName());
-            eventObj.put("Date", MySqlUtil.getDate(event.getStartDateTime()));
-            eventObj.put("Time", MySqlUtil.getTime(event.getStartDateTime()) +"-" +  MySqlUtil.getTime(event.getEndDateTime()));
-            eventObj.put("Description", event.getDescription());
-            eventObj.put("Location", address.getStreet());
-            eventObj.put("category", eventCategory.getName());
-            eventObj.put("Limit", event.getTokenLimit());
-            return eventObj;
-        }).forEach(eo -> jsonArray.add(eo));
-        return jsonArray.toJSONString();
-    }
+
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

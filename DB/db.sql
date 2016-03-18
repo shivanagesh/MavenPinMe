@@ -110,6 +110,18 @@ CREATE INDEX `event_address_idx` ON `event` (`address_id` ASC);
 
 CREATE INDEX `event_category_idx` ON `event` (`event_category` ASC);
 
+-- -----------------------------------------------------
+-- Table `user_event`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS  `user_event` ;
+
+CREATE TABLE IF NOT EXISTS `user_event` (
+  `user_id` INT NOT NULL,
+  `event_id` INT NOT NULL,
+  PRIMARY KEY (`user_id`, `event_id`)
+  )
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `token`
