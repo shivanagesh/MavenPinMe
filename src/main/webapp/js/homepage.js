@@ -115,10 +115,24 @@ var fontcolor;
 //}]
 
 
-function newevent(){
+function newevent(userId, eventId){
 
 		var r =confirm("This Event is Selected!");
 		if (r == true) {
+                 // Pin Event
+
+            $.ajax({
+                url: 'PinEvent',
+                type: 'POST',
+                data: { UserId: userId, EventId: eventId }  ,
+                success: function (response) {
+                    //your success code
+                },
+                error: function () {
+                    //your error code
+                }
+            });
+
 //			       alert("Token emailed");
 			       $.ajax({url: "Token", success: function(result){
 			    	   alert("Token emailed");
@@ -172,7 +186,28 @@ function indexloadData(data) {
     }
 }
 
-function loadData(data) {
+function loadMyEvents(data) {
+
+    for (var i = 0; i < data.length; i++) {
+        var number = imagesid(data[i]);
+
+        if(data[i].category == "Entertainment" ){
+            var imgsrc="e";
+        }else if(data[i].category == "Clothing" ){
+            var imgsrc="c";
+        }else{
+            var imgsrc = data[i].category.toLowerCase();
+        }
+        var imgdata = imgsrc + number;
+        var txt = '<li id="elem' + i + '"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
+
+        $('#couponlist').append(txt);
+        $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());
+        $('#elem' + i).css("color", "white");
+    }
+}
+
+function loadData(data, userId) {
 
     for (var i = 0; i < data.length; i++) {
         var number = imagesid(data[i]);
@@ -185,7 +220,7 @@ function loadData(data) {
         var imgsrc = data[i].category.toLowerCase();
         }
         var imgdata = imgsrc + number;
-        var txt = '<li id="elem' + i + '" onclick="newevent()"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
+        var txt = '<li id="elem' + i + '" onclick="newevent(' + userId + ',' + data[i].Id +')"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
 
         $('#couponlist').append(txt);
         $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());

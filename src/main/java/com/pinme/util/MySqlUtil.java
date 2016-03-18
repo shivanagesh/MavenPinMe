@@ -38,7 +38,6 @@ public class MySqlUtil {
                 e.printStackTrace();
             }
         }
-
         return null;
     }
 
