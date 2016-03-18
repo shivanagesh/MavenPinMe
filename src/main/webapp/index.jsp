@@ -3,6 +3,7 @@
 
 <head>
   <%@ include file="import.jsp" %>
+  
 <link rel="icon" href="images/pinfavicon.ico" />
 <title>Pin Me</title>
 </head>

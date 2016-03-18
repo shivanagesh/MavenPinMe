@@ -4,12 +4,13 @@
 <head>
     <%@ include file="import.jsp" %>
     <%@ include file="SessionCheck.jsp" %>
+      <%@ include file="header.jsp" %>
 
     <title>Pin Me</title>
 </head>
 
 <body class="padding">
-<header class="adjust">
+<!-- <header class="adjust">
     <div class="icon">
         <img src="images/icon.png" alt="pin image">
     </div>
@@ -26,7 +27,7 @@
                 <li><a href="Logout"> Logout</a> </li>
             </ul>
         </div>
-    </header>
+    </header> -->
     <section class="divider">
 </section>
 <form name="form1" action="Check" method="Post">
