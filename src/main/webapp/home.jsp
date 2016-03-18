@@ -50,6 +50,11 @@
     <br> developed by Prathyusha Rani,Prathyusha,Shiva  Divya
 </footer>
 <script type="text/javascript" src="js/homepage.js"></script>
+<script type="text/javascript">
+    $.getJSON( "Event", function( data ) {
+        loadData(data);
+    });
+</script>
 <!-- <script>
     $(document).ready(function(){
 	loadData();

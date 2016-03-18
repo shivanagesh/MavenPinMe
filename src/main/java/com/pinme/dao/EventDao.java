@@ -1,5 +1,6 @@
     package com.pinme.dao;
 
+    import java.sql.Connection;
     import java.sql.PreparedStatement;
     import java.sql.ResultSet;
     import java.sql.SQLException;
@@ -20,6 +21,7 @@
     public class EventDao extends DBConnect {
         public static List<Event>	events = new ArrayList<Event>();
         private static AtomicInteger uniqueId = new AtomicInteger();
+        private Connection dbConnection = getDBConnection();
 
         /**
          *
