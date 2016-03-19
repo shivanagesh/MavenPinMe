@@ -20,17 +20,17 @@
             <option value="Food">Food</option>
             <option value="Clothing">Clothing</option>
             <option value="Entertainment">Entertainment</option>
-            <option value="recreation">recreation</option>
+            <option value="recreation">Recreation</option>
         </select>
     </section>
 </form>
 <section class="coupon">
-    <ul id="couponlist">
+    <ul id="couponlist" class="myevents">
     </ul>
 </section>
 <script type="text/javascript" src="js/homepage.js"></script>
 <script type="text/javascript">
-    $.getJSON( "PinEvent", {UserId: "<%=session.getAttribute("userid")%>"}, function( data ) {
+    $.getJSON( "MyEvents", {UserId: "<%=session.getAttribute("userid")%>"}, function( data ) {
         loadMyEvents(data);
     });
 </script>

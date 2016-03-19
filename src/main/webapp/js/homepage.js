@@ -188,28 +188,30 @@ function indexloadData(data) {
 
 function loadMyEvents(data) {
 
-    for (var i = 0; i < data.length; i++) {
-        var number = imagesid(data[i]);
-
-        if(data[i].category == "Entertainment" ){
+	if(data.length >0){
+	for (var i = 0; i < data.length; i++) {
+    	var number = imagesid(data[i]);
+    	if(data[i].category == "Entertainment" ){
             var imgsrc="e";
         }else if(data[i].category == "Clothing" ){
             var imgsrc="c";
-        }else{
+        }
+        else{
             var imgsrc = data[i].category.toLowerCase();
         }
         var imgdata = imgsrc + number;
-        var txt = '<li id="elem' + i + '"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
+        var txt = '<li id="elem' + i + '" event-id='+data[i].Id+'><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '<br> <i class="glyphicon glyphicon-pencil edit" style="cursor:pointer" ></i>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i class="glyphicon glyphicon-remove delete" style="cursor:pointer"></i></li>';
 
         $('#couponlist').append(txt);
         $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());
         $('#elem' + i).css("color", "white");
-    }
+    }}
 }
 
 function loadData(data, userId) {
+
 	if(data.length >0){
-    for (var i = 0; i < data.length; i++) {
+	for (var i = 0; i < data.length; i++) {
         var number = imagesid(data[i]);
        
         if(data[i].category == "Entertainment" ){
@@ -225,8 +227,7 @@ function loadData(data, userId) {
         $('#couponlist').append(txt);
         $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());
         $('#elem' + i).css("color", "white");
-    }
-	}
+    }}
 }
 //
 //function getEventList(){
@@ -252,6 +253,43 @@ function loadData(data, userId) {
 //    }
 //}
 
+$(document).ready(function() {
+
+	//dropdown select
+	    var $myEvents = $(".myevents");
+	   
+	    $myEvents.on("click", ".delete", function() {
+	    	var ele = $(this);
+	    	ele.parent().detach()
+	    	$.ajax({
+	    	    url: 'MyEvents?'+$.param({"EventId": $(this).parent().attr( 'event-id' )}),
+	    	    type: 'DELETE',
+	    	    contentType: "application/json",
+	    	    dataType: "text",
+	    	    success: function(response) {
+	    	    	debugger;
+	    	    	var obj = $.parseJSON(response);
+	    	    	if(obj.Status == "Success"){
+	    	    		
+	    	    	}
+	    	       console.log(response);
+	    	    }
+	    	});
+	    	
+		    	
+	    });
+	    
+	    
+	    $myEvents.on("click", ".edit", function() {
+	    	window.location.replace("/editAd.jsp");
+
+	       
+	    })
+	   
+
+	   
+
+	});
 function loadSearchData(data, userId) {
 	if(data.length >0){
     for (var i = 0; i < data.length; i++) {
@@ -276,3 +314,4 @@ function loadSearchData(data, userId) {
 		 $('#couponlist').append(txt);
 	}
 }
+

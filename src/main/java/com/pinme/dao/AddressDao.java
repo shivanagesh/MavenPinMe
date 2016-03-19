@@ -52,12 +52,16 @@ public class AddressDao extends DBConnect {
 	}
 
 	public void removeAddress(int id) {
-		for (Address Address : addresses) {
-			if (Address.getId() == (id)) {
-				addresses.remove(Address);
-				return;
-			}
+		String sql = "DELETE from address where id = ? ";
+		PreparedStatement addressDeleteStatement = null;
+		try {
+			addressDeleteStatement = dbConnection.prepareStatement(sql);
+			addressDeleteStatement.setInt(1, id);
+			addressDeleteStatement.executeUpdate();
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

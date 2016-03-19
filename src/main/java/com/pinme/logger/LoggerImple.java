@@ -4,32 +4,26 @@
 package com.pinme.logger;
 
 import java.io.IOException;
-
+import java.nio.file.NoSuchFileException;
 import java.util.logging.*;
 
-/**
- *
- * <p> Which contains extension for logging functionality and file handler for log <p> 
- *
- */
+public class LoggerImple {
 
-public class Logger {
-
-	public final static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Logger.class.getName());
+	public final static Logger logger = Logger.getLogger(LoggerImple.class.getName());
 	public static LogFormatter logformater;
 
-	public Logger() {
+	public LoggerImple() {
 		initLogger();
 	}
 
 	/**
 	 * This method initialize default parameters and objects for logger class
 	 */
-	private void initLogger() {
+	public void initLogger() {
 		try {
 			java.util.logging.Logger rootLogger = java.util.logging.Logger.getLogger("");
 			rootLogger.setUseParentHandlers(false);
-			Handler csvFileHandler = new FileHandler("logger/log.csv", 100000, 1, true);
+			Handler csvFileHandler = new FileHandler("pinme.csv", 100000, 1, true);
 			logformater = new LogFormatter();
 			rootLogger.addHandler(csvFileHandler);
 			csvFileHandler.setFormatter(logformater);
@@ -40,12 +34,10 @@ public class Logger {
 		}
 	}
 
-	public void log(LogRecord record) {
-		logger.log(record);
+	
+	public java.util.logging.Logger getLogger() {
+		System.out.println(logger);
+		return logger;
 	}
-
-	
-
-	
 
 }
