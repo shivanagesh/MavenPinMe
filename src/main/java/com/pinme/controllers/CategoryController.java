@@ -7,9 +7,7 @@ import com.pinme.model.EventCategory;
 
 
 /**
- * @author Shivanagesh Chandra Mar 7, 2016 11:06:59 PM
- * Modified by Divya for fetching data according to category name
- * fileUserController.java
+ *
  */
 public class CategoryController {
 

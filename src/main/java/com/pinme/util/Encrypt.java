@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @author Shivanagesh Chandra Mar 10, 2016 1:39:01 AM
+ *
  * fileEncrypt.java
  */
 public class Encrypt {

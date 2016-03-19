@@ -16,9 +16,7 @@ import com.pinme.model.UserEvent;
 
 
 /**
- * @author Shivanagesh Chandra Mar 7, 2016 11:32:31 PM fileUserDao.java
  *
- * @author Chintala Prathyusha, wrote routines to persist event info
  */
 public class EventDao extends DBConnect {
     public static List<Event>	events = new ArrayList<Event>();

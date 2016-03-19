@@ -14,8 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Prathyusha CH
+ *
  */
 @WebServlet("/PinEvent")
 public class PinEvent extends HttpServlet {

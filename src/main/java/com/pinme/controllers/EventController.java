@@ -14,9 +14,7 @@ import com.pinme.mail.Mail;
 import com.pinme.model.*;
 
 /**
- * @author Shivanagesh Chandra Mar 8, 2016 1:14:53 AM fileEventController.java
  *
- * @author Chintala Prathyusha, post events and get events by user id
  */
 public class EventController {
 
