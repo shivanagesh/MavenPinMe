@@ -188,7 +188,8 @@ function indexloadData(data) {
 
 function loadMyEvents(data) {
 
-    for (var i = 0; i < data.length; i++) {
+	if(data.length >0){
+	for (var i = 0; i < data.length; i++) {
     	var number = imagesid(data[i]);
     	if(data[i].category == "Entertainment" ){
             var imgsrc="e";
@@ -204,12 +205,13 @@ function loadMyEvents(data) {
         $('#couponlist').append(txt);
         $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());
         $('#elem' + i).css("color", "white");
-    }
+    }}
 }
 
 function loadData(data, userId) {
-	if(data.lenght >0){
-    for (var i = 0; i < data.length; i++) {
+
+	if(data.length >0){
+	for (var i = 0; i < data.length; i++) {
         var number = imagesid(data[i]);
        
         if(data[i].category == "Entertainment" ){
@@ -225,8 +227,7 @@ function loadData(data, userId) {
         $('#couponlist').append(txt);
         $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());
         $('#elem' + i).css("color", "white");
-    }
-	}
+    }}
 }
 
 function getEventList(){
@@ -252,7 +253,6 @@ function getEventList(){
     }
 }
 
-<<<<<<< HEAD
 $(document).ready(function() {
 
 	//dropdown select
@@ -290,7 +290,6 @@ $(document).ready(function() {
 	   
 
 	});
-
 function loadSearchData(data, userId) {
 	if(data.length >0){
     for (var i = 0; i < data.length; i++) {
