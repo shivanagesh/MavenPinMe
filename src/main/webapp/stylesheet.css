@@ -198,7 +198,7 @@
 
 .postingAd {
 	padding: 30px;
-	width: 550px;
+	width: 600px;
 	margin: 30px;
 	margin-left: 250px;
 	border-radius: 25px;
@@ -430,4 +430,12 @@ ul#couponlist:before, ul#couponlist:after {
 	padding: 40px;
 	font-size: 30px;
 	color: #004D40;
+}
+
+.Location{
+	max-width:445px;
+	text-align: right;
+}
+.Location input{
+	    margin:1px 30px;
 }

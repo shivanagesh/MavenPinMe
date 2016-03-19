@@ -282,6 +282,43 @@ Statement userEventQuery = null;
         return userSearchEvents;
 
     }
+    public List<Event> getEventCategories(String data){
+//    	SELECT id FROM event_category where name = "food"
+    	String sql;
 
-
+        
+        if((data).equals("All")){
+         sql="Select * from event";
+        }else{
+         String id = "Select id from event_category where name = \""+data+"\"";
+         System.out.println("id"+id);
+         sql="Select * from event where event_category=("+id+")";
+        }
+        System.out.println("sql"+sql);
+        Statement userEventQuery = null;
+        List<Event> userCategoryEvents = new ArrayList<Event>();
+        try{
+            userEventQuery =  dbConnection.createStatement();
+            
+            ResultSet rs = userEventQuery.executeQuery(sql);
+            
+            while (rs.next()) {                    
+            Event event1 = new Event();
+            event1.setId(rs.getInt("id"));
+            event1.setAddressId(rs.getInt("address_id"));
+            event1.setUserId(rs.getInt("user_id"));
+            event1.setCategoryId(rs.getInt("event_category"));
+            event1.setTokenized(rs.getBoolean("is_tokenized"));
+            event1.setTokenLimit(rs.getInt("token_limit"));
+            event1.setDescription(rs.getString("description"));
+            event1.setStartDateTime(rs.getString("start_time"));
+            event1.setEndDateTime(rs.getString("end_time"));
+            event1.setName(rs.getString("name"));
+            userCategoryEvents.add(event1);
+    }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return userCategoryEvents;
+    }
 }

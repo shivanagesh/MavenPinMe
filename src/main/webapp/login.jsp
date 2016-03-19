@@ -2,7 +2,6 @@
 <html>
 <head>
   <%@ include file="import.jsp" %>
-<title>Pin Me</title>
 </head>
 <body class="padding">
 	<header>
@@ -37,14 +36,6 @@
 				<button type="submit" class="button">Login</button>
 			</form>
 		</div>
-
-
 	</section>
-	
-	<footer>
-		@CopyRights:Pin Me <br> developed by Prathyusha
-		Rani,Prathyusha,Shiva & Divya
-	</footer>
-
 </body>
 </html>

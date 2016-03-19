@@ -52,11 +52,6 @@
 		</fieldset>
 
 	</form>
-
-	<footer>
-		@CopyRights:Pin Me <br> developed by Prathyusha
-		Rani,Prathyusha,Shiva & Divya
-	</footer>
 	<Script src="js/app.js"></Script>
 </body>
 </html>

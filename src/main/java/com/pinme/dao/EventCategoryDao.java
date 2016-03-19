@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -11,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.pinme.model.Event;
 import com.pinme.model.EventCategory;
 import com.pinme.model.User;
 import java.util.stream.*;
@@ -114,5 +116,6 @@ public class EventCategoryDao extends DBConnect {
     public List<EventCategory> getCatgories(){
         return eventCategories;
     }
-
+    
+   
 }

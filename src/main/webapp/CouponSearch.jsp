@@ -20,23 +20,17 @@
     </section>
     <script type="text/javascript" src="js/homepage.js"></script>
 <script type="text/javascript">
-
 var userid = "<%=session.getAttribute("userid")%>";
-
  $( "#searchForm" ).submit(function( event ) {
-	 
-	  event.preventDefault();
+	   event.preventDefault();
 	  $.ajax({
 		  url: "/pinme/Search?searchelement="+$("#searchelement").val()
 		}).done(function(data) {
 			$('#couponlist').empty();
 			 document.getElementById("couponlist").style.display="block";
 			 loadSearchData(data, userid);
-		});
-	  
+		});	  
 });
-
-
 </script>
 </body>
 </html>

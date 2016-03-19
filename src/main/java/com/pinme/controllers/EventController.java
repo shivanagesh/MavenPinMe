@@ -136,5 +136,10 @@ public class EventController {
     public List<Event> getSearchEvents(String event){
         return eventDao.getEventsBySearch(event);
     }
+    
+    public List<Event> getEventsbyCategory(String event){
+        return eventDao.getEventCategories(event);
+    }
+    
 	
 }
