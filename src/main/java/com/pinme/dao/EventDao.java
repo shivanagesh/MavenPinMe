@@ -18,7 +18,7 @@ import com.pinme.model.UserEvent;
  *
  */
 public class EventDao extends DBConnect {
-<<<<<<< HEAD
+
 	public static List<Event> events = new ArrayList<Event>();
 	private static AtomicInteger uniqueId = new AtomicInteger();
 	private Connection dbConnection = getDBConnection();
