@@ -56,7 +56,7 @@
         loadMyEvents(data);
     });
 </script>
-</script> -->
+
 </body>
 
 </html>
