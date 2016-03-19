@@ -1,8 +1,7 @@
 package com.pinme.dao;
 
 /**
- * @author Shivanagesh Chandra Mar 9, 2016 6:11:40 PM
- * fileDBConnect.java
+ *
  */
 
 import java.sql.*;

@@ -8,8 +8,7 @@ import com.pinme.model.User;
 import com.pinme.util.Encrypt;
 
 /**
- * @author Shivanagesh Chandra Mar 7, 2016 11:06:59 PM
- * fileUserController.java
+ *
  */
 public class UserController {
 
