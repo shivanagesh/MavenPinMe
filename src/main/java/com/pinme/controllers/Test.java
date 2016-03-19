@@ -7,7 +7,7 @@ import com.pinme.model.EventCategory;
 import com.pinme.model.User;
 
 /**
- * @author Shivanagesh Chandra Mar 8, 2016 1:29:57 PM fileTest.java
+ *
  */
 public class Test {
 

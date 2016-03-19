@@ -10,8 +10,7 @@ import org.json.simple.JSONObject;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Prathyusha CH
+ *
  */
 public class EventUtil {
     public static String populateJsonFromEvents(List<Event> events){

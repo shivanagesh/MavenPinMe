@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: PrathyushaCh
- * Date: 3/16/16
+ *
  */
 public class UserEvent {
     private User user;

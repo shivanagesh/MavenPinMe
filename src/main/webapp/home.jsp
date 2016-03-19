@@ -5,8 +5,6 @@
     <%@ include file="import.jsp" %>
     <%@ include file="SessionCheck.jsp" %>
       <%@ include file="header.jsp" %>
-
-    <title>Pin Me</title>
 </head>
 
 <body class="padding">
@@ -28,10 +26,7 @@
         <ul id="couponlist">
         </ul>
     </section>
-<footer>
-    @CopyRights:Pin Me
-    <br> developed by Prathyusha Rani,Prathyusha,Shiva  Divya
-</footer>
+
 <script type="text/javascript" src="js/homepage.js"></script>
 <script type="text/javascript">
     $.getJSON( "Event", function( data ) {

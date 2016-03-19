@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -14,11 +15,10 @@ import com.pinme.model.EventCategory;
 import com.pinme.model.UserEvent;
 
 /**
- * @author Shivanagesh Chandra Mar 7, 2016 11:32:31 PM fileUserDao.java
  *
- * @author Chintala Prathyusha, wrote routines to persist event info
  */
 public class EventDao extends DBConnect {
+<<<<<<< HEAD
 	public static List<Event> events = new ArrayList<Event>();
 	private static AtomicInteger uniqueId = new AtomicInteger();
 	private Connection dbConnection = getDBConnection();
@@ -256,23 +256,39 @@ public class EventDao extends DBConnect {
 
 	}
 
-	public List<Event> getEventsBySearch(String event) {
-		String eventid = "SELECT id FROM event_category WHERE name=%" + event + "%;";
-		String sql = "SELECT * FROM event WHERE event_category=" + eventid + ";";
-		PreparedStatement userEventQuery = null;
-		List<Event> userSearchEvents = new ArrayList<Event>();
-		try {
-			userEventQuery = dbConnection.prepareStatement(sql);
-			ResultSet rs = userEventQuery.executeQuery();
-			while (rs.next()) {
-				int eventId = rs.getInt("event_id");
-				userSearchEvents.add(getEvent(eventId));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return userSearchEvents;
+    
+    public List<Event> getEventsBySearch(String event){
+//    	SELECT * FROM event WHERE UPPER(name)='%'+UPPER("s")+'%'
+        String sql = "SELECT * FROM event WHERE name LIKE '%"+event+"%'";
+        System.out.println(sql);
+Statement userEventQuery = null;
+        List<Event> userSearchEvents = new ArrayList<Event>();
+        try{
+            userEventQuery =  dbConnection.createStatement();
+            
+            ResultSet rs = userEventQuery.executeQuery(sql);
+            
+            while (rs.next()) {                    
+            Event event1 = new Event();
+            event1.setId(rs.getInt("id"));
+            event1.setAddressId(rs.getInt("address_id"));
+            event1.setUserId(rs.getInt("user_id"));
+            event1.setCategoryId(rs.getInt("event_category"));
+            event1.setTokenized(rs.getBoolean("is_tokenized"));
+            event1.setTokenLimit(rs.getInt("token_limit"));
+            event1.setDescription(rs.getString("description"));
+            event1.setStartDateTime(rs.getString("start_time"));
+            event1.setEndDateTime(rs.getString("end_time"));
+            event1.setName(rs.getString("name"));
+            userSearchEvents.add(event1);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return userSearchEvents;
 
-	}
+    }
+
+
 
 }

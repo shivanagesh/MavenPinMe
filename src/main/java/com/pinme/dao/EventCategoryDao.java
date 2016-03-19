@@ -17,9 +17,7 @@ import java.util.stream.*;
 
 
 /**
- * @author Shivanagesh Chandra Mar 7, 2016 11:32:31 PM fileUserDao.java
  *
- * @author Chintala Prathyusha, wrote routines to get event categories
  */
 public class EventCategoryDao extends DBConnect {
     public static List<EventCategory> eventCategories = new ArrayList<EventCategory>();

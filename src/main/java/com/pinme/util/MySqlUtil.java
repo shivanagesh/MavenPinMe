@@ -4,10 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Prathyusha Chintala
- * Date: 3/15/16
- * Time: 12:23 AM
+ *
  * To change this template use File | Settings | File Templates.
  */
 public class MySqlUtil {

@@ -13,9 +13,7 @@ import com.pinme.model.Address;
 import com.pinme.model.Event;
 
 /**
- * @author Shivanagesh Chandra Mar 7, 2016 11:32:31 PM fileUserDao.java
  *
- * @author Prathyusha Chintala, Implemented routine to persist address
  */
 public class AddressDao extends DBConnect {
 	public static List<Address> addresses = new ArrayList<Address>();

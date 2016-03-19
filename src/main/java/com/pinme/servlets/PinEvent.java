@@ -16,8 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Prathyusha CH
+ *
  */
 @WebServlet("/PinEvent")
 public class PinEvent extends HttpServlet {
