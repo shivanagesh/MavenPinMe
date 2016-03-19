@@ -20,6 +20,7 @@ import com.pinme.dao.AddressDao;
 import com.pinme.dao.EventCategoryDao;
 import com.pinme.model.Address;
 import com.pinme.model.Event;
+import com.pinme.util.EventUtil;
 import com.pinme.util.JSonMapperSingleTon;
 
 /**
@@ -43,39 +44,10 @@ public class Search extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String searchelem = request.getParameter("searchelement");
-		List<Event> list = EventController.getInstance().getEvents();
-		JSONArray jsonlist = new JSONArray();
-		
-		for (Event ev : list) {
-			JSONObject object = new JSONObject();
-			object.put("Name", ev.getName());
-			SimpleDateFormat dateformatter = new SimpleDateFormat("MM-dd-YYY");
-			SimpleDateFormat timeformatter = new SimpleDateFormat("HH:mm");
-			Date date = null;
-			Date time = null;
-			try {
-				date = dateformatter.parse(ev.getStartDateTime());
-				time = timeformatter.parse(ev.getStartDateTime());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			object.put("Date", date);
-			object.put("Time", time);
-			object.put("Description", ev.getDescription());
-			AddressDao addao = new AddressDao();
-			Address adrres = addao.getAddress(ev.getAddressId());
-			object.put("Location", JSonMapperSingleTon.getInstance().writeValueAsString(adrres));
-			EventCategoryDao edao = new EventCategoryDao();
-			object.put("category", edao.getCategory(ev.getCategoryId()).getName());
-			if(ev.isTokenized()){
-				object.put("Limit", ev.getTokenLimit());
-			}
-			jsonlist.add(JSonMapperSingleTon.getInstance().writeValueAsString(object));	
-		}	
-		response.getWriter().write(JSonMapperSingleTon.getInstance().writeValueAsString(jsonlist));
-		
-		
+		List<com.pinme.model.Event> SearchEvents = EventController.getInstance().getSearchEvents(searchelem);
+        response.setContentType("text/json");
+        response.getWriter().write(EventUtil.populateJsonFromEvents(SearchEvents));
+ 	
 	}
 
 	/**
@@ -83,6 +55,8 @@ public class Search extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
 		doGet(request, response);
 	}
 

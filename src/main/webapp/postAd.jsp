@@ -6,25 +6,7 @@
       <%@ include file="header.jsp" %>
     </head>
     <body class="padding">
-    <!-- <header class="adjust">
-    <div class="icon">
-    <img src="images/icon.png" alt="pin image">
-    </div>
-    <h1 class="header">Pin Me!</h1>
-            <div class="user">
-                <button class="account"><i class="fa fa-user"></i></button>
-                <div class="user-content">
-                    <ul>
-                       <li><a href="home.jsp">Home</a></li>
-                       <li><a href="History.jsp">History</a></li>
-                        <li><a href="postAd.jsp">Post Event</a></li>
-                        <li><a href="CouponSearch.jsp">Find Event</a></li>
-                        <li><a href="myevents.jsp"> My Events</a> </li>
-                        <li><a href="Logout"> Logout</a> </li>
-                    </ul>
-                </div>
-            </div>
-        </header> -->
+  
         <section class="divider">
     </section>
         <section>
@@ -52,8 +34,7 @@
         </div><div>
       <label>Catergory
       <select name="Catergory" class="select">
-       <option value="None selected" disabled="disabled" selected="selected">Please select below</option>
-        <option value="Food">Food</option>
+        <option value="Food" selected="selected">Food</option>
         <option value="Clothing">Clothing</option>
         <option value="Entertainment">Entertainment</option>
         <option value="recreation">recreation</option>
@@ -62,9 +43,8 @@
          </div><div>
     <label>Do you want to Limit your resource?
     <select  id="settinglimit" name="settinglimit" onchange="setLimit()">
-    <option value="none" id="none" disabled="disabled" selected="selected">None</option>
     <option value="yes" id="yes">Yes</option>
-    <option value="No" id="no">No</option>
+    <option value="No" id="no" selected="selected">No</option>
     </select>
          </div><div id="limit" class="limit">
          <label>Set Maximum Value

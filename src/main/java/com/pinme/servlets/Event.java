@@ -83,6 +83,8 @@ public class Event extends HttpServlet {
         // Fetch event category id from the DB
         int eventCategoryId = EventController.getInstance().getEventCategoryByName(category).getId();
         String settingLimit = request.getParameter("settinglimit");
+        System.out.println("settingLimit" + settingLimit);
+//        if(settingLimit )
         String maxLimitValue = request.getParameter("limit");
         String description = request.getParameter("description");
         String eventDateTimeStr = MySqlUtil.getMySqlDateTimeStr(eventDate, eventTime, 0);

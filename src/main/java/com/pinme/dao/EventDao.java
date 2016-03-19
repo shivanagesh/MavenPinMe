@@ -251,7 +251,25 @@ public class EventDao extends DBConnect {
         }
 
     }
+    
+    public List<Event> getEventsBySearch(String event){
+    	String eventid = "SELECT id FROM event_category WHERE name=%"+event+"%;";
+        String sql = "SELECT * FROM event WHERE event_category="+eventid+";";
+        PreparedStatement userEventQuery = null;
+        List<Event> userSearchEvents = new ArrayList<Event>();
+        try{
+            userEventQuery = dbConnection.prepareStatement(sql);
+            ResultSet rs = userEventQuery.executeQuery();
+            while (rs.next()) {
+                int eventId = rs.getInt("event_id");
+                userSearchEvents.add(getEvent(eventId));
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return userSearchEvents;
 
+    }
 
 
 }

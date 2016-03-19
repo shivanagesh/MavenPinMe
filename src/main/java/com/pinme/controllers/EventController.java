@@ -135,4 +135,8 @@ public class EventController {
 		}
 	}
 
+    public List<Event> getSearchEvents(String event){
+        return eventDao.getEventsBySearch(event);
+    }
+	
 }
