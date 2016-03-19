@@ -281,9 +281,7 @@ $(document).ready(function() {
 	    
 	    
 	    $myEvents.on("click", ".edit", function() {
-	    	window.location.replace("/editAd.jsp");
-
-	       
+	    	window.location.replace("Event?event_id="+$(this).parent().attr( 'event-id' ));
 	    })
 	   
 

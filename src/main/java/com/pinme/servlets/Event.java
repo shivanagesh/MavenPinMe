@@ -38,9 +38,28 @@ public class Event extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<com.pinme.model.Event> userEvents = EventController.getInstance().getEvents();
-        response.setContentType("text/json");
-        response.getWriter().write(EventUtil.populateJsonFromEvents(userEvents));
+        String eventIdStr = request.getParameter("event_id");
+        if(eventIdStr != null){
+            // Just edit the given event id
+            int eventId = Integer.parseInt(eventIdStr);
+            com.pinme.model.Event event = EventController.getInstance().getEventByEventId(eventId);
+            if(event.getTokenLimit() > 0){
+                event.setTokenized(true);
+            }
+            String uiDateStr = event.getFormattedDate();
+            Address address = EventController.getInstance().getEventAddress(event);
+            EventCategory eventCategory = EventController.getInstance().getEventCategoryById(event.getCategoryId());
+            response.setContentType("text/html");
+            request.setAttribute("event", event);
+            request.setAttribute("address", address);
+            request.setAttribute("eventCategory", eventCategory);
+            request.getRequestDispatcher("editAd.jsp").forward(request, response);
+        } else{
+            // Fetch all events
+            List<com.pinme.model.Event> userEvents = EventController.getInstance().getEvents();
+            response.setContentType("text/json");
+            response.getWriter().write(EventUtil.populateJsonFromEvents(userEvents));
+        }
     }
 
 
@@ -54,18 +73,41 @@ public class Event extends HttpServlet {
         String firstName = (String)userSesstion.getAttribute("first_name");
         String email = (String)userSesstion.getAttribute("email");
 
-        // Check if the user is logged in
-        if(userId > 0 && firstName != null && email != null){
+        String eventId = (String)request.getParameter("eventId");
+        String addressId = (String)request.getParameter("addressId");
+        String categoryId = (String)request.getParameter("categoryId");
+
+        if(eventId != null && addressId != null){
             Address address = getEventAddress(request);
+            address.setId(Integer.parseInt(addressId));
             com.pinme.model.Event event = getEvent(request, userId);
-            int result = EventController.getInstance().createEvent(address, event.getCategoryId(), event);
+            event.setId(Integer.parseInt(eventId));
+            event.setAddressId(address.getId());
+            int result = EventController.getInstance().updateEvent(address, event.getCategoryId(), event);
             if(result < 0){
-                userSesstion.setAttribute("event-create-error", "Internal Error: Unable to post event!");
-                response.setContentType("text/html");
-                request.getRequestDispatcher("postAd.jsp").forward(request, response);
-            } else{
+                userSesstion.setAttribute("event-update-error", "Internal Error: Unable to update event!");
                 response.setContentType("text/html");
                 request.getRequestDispatcher("home.jsp").forward(request, response);
+
+            }  else{
+                response.setContentType("text/html");
+                request.getRequestDispatcher("MyEvents.jsp").forward(request, response);
+            }
+
+        } else{
+            // Check if the user is logged in
+            if(userId > 0 && firstName != null && email != null){
+                Address address = getEventAddress(request);
+                com.pinme.model.Event event = getEvent(request, userId);
+                int result = EventController.getInstance().createEvent(address, event.getCategoryId(), event);
+                if(result < 0){
+                    userSesstion.setAttribute("event-create-error", "Internal Error: Unable to post event!");
+                    response.setContentType("text/html");
+                    request.getRequestDispatcher("postAd.jsp").forward(request, response);
+                } else{
+                    response.setContentType("text/html");
+                    request.getRequestDispatcher("home.jsp").forward(request, response);
+                }
             }
         }
 
@@ -94,7 +136,10 @@ public class Event extends HttpServlet {
         com.pinme.model.Event event = new com.pinme.model.Event(eventDateTimeStr, eventEndTimeStr,
                 description,
                 maxLimitValue != null && maxLimitValue.length() > 0 ? Integer.parseInt(maxLimitValue) : 0,
-                settingLimit.equals("Yes") ? true:false, -1, eventName, userId, eventCategoryId);
+                settingLimit.equals("yes") ? true:false, -1, eventName, userId, eventCategoryId);
+        if(!event.isTokenized()){
+            event.setTokenLimit(0);
+        }
         return event;
     }
 
@@ -106,7 +151,7 @@ public class Event extends HttpServlet {
         String landMarks = request.getParameter("landmarks");
 
         String houseNumber = new Integer(new Random().nextInt(1000)).toString();
-        Address address = new Address(houseNumber, addressLine, city, "CA",
+        Address address = new Address(houseNumber, addressLine, city, landMarks,
                 zipCode, "USA", "37.354108", "-121.955236" );
 
         return address;
