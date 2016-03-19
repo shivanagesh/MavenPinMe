@@ -41,6 +41,7 @@ public class LogFormatter extends Formatter {
 		formartRecord.append(fomatDate(record.getMillis()));
 		formartRecord.append(",");
 		formartRecord.append(record.getSourceClassName());
+		formartRecord.append(",");
 		formartRecord.append(record.getMessage());
 		return formartRecord.toString();
 	}

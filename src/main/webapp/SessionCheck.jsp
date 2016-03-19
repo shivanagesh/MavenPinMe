@@ -3,3 +3,6 @@
 	 response.sendRedirect("index.jsp");
 	}  
 %>
+<script>
+var USER_ID = <%=session.getAttribute("userid")%>
+</script>

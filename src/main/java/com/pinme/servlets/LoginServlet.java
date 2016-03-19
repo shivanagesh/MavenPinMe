@@ -2,7 +2,6 @@ package com.pinme.servlets;
 
 import java.io.IOException;
 
-
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -12,14 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pinme.controllers.Test;
 import com.pinme.controllers.UserController;
+import com.pinme.logger.AppLogger;
 import com.pinme.model.User;
 import com.pinme.util.JSonMapperSingleTon;
 
@@ -34,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public LoginServlet() {
-		
+
 		super();
 	}
 
@@ -52,32 +55,32 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-		
-		String username = request.getParameter("userEmail");
-		String password = request.getParameter("Password");
+		try {
 
-		response.setContentType("application/json");
+			String username = request.getParameter("userEmail");
+			String password = request.getParameter("Password");
 
+			response.setContentType("application/json");
 
+			if (UserController.getInstance().authenticate(username, password)) {
+				User us = UserController.getInstance().getUser(username, password);
+				HttpSession session = request.getSession(true);
+				System.out.println("---------------------");
+				System.out.println(session);
+				System.out.println("---------------**-----");
+				System.out.println(us);
+				session.setAttribute("userid", us.getId());
+				session.setAttribute("first_name", us.getFirstName());
+				session.setAttribute("email", us.getEmail());
 
-		if (UserController.getInstance().authenticate(username, password)) {
-			User us = UserController.getInstance().getUser(username, password);
-			HttpSession session=request.getSession(true); 
-			System.out.println("---------------------");
-			System.out.println(session);
-			System.out.println("---------------**-----");
-			System.out.println(us);
-			session.setAttribute("userid",us.getId()); 
-		    session.setAttribute("first_name",us.getFirstName());
-		    session.setAttribute("email", us.getEmail());
-		          
-		       
-			response.setContentType("text/html");
-			request.getRequestDispatcher("home.jsp").forward(request, response);
-		}else{
-			response.setContentType("text/html");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+				response.setContentType("text/html");
+				request.getRequestDispatcher("home.jsp").forward(request, response);
+			} else {
+				response.setContentType("text/html");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}
+		} catch (Exception e) {
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 
 	}
