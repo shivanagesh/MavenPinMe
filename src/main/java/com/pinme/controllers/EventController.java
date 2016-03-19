@@ -43,37 +43,34 @@ public class EventController {
 		return instance;
 	}
 
-    public List<EventCategory> getEventCategories(){
-        return eventCategory.getCategoriesFromDb();
-    }
-    
+	public List<EventCategory> getEventCategories() {
+		return eventCategory.getCategoriesFromDb();
+	}
 
-    public EventCategory getEventCategoryByName(String categoryName){
-        return eventCategory.getEventCategoryByName(categoryName);
-    }
+	public EventCategory getEventCategoryByName(String categoryName) {
+		return eventCategory.getEventCategoryByName(categoryName);
+	}
 
-    public EventCategory getEventCategoryById(int categoryId){
-        return eventCategory.getEventCategoryById(categoryId);
-    }
+	public EventCategory getEventCategoryById(int categoryId) {
+		return eventCategory.getEventCategoryById(categoryId);
+	}
 
-	
-	
-	public List<Event> getEvents(){
+	public List<Event> getEvents() {
 		return eventDao.findAllEventsFromDB();
 	}
 
-    public List<Event> getPinnedEvents(int userId){
-        return eventDao.getPinnedEventsByUserId(userId);
-    }
+	public List<Event> getPinnedEvents(int userId) {
+		return eventDao.getPinnedEventsByUserId(userId);
+	}
 
-    public List<Event> getEventsByUserId(int userId){
-        return eventDao.findEventsByUserId(userId);
+	public List<Event> getEventsByUserId(int userId) {
+		return eventDao.findEventsByUserId(userId);
 
-    }
+	}
 
-    public Address getEventAddress(Event event){
-        return address.getAddress(event.getAddressId());
-    }
+	public Address getEventAddress(Event event) {
+		return address.getAddress(event.getAddressId());
+	}
 
 	public int createEvent(Address ad, int categoryId, Event event) {
 		try {
@@ -96,45 +93,46 @@ public class EventController {
 			e.printStackTrace();
 		}
 	}
-	
-	public int pinEvent(int userid,int eventId) {
-        int result = -1;
+
+	public int pinEvent(int userid, int eventId) {
+		int result = -1;
 		try {
 
-            result = eventDao.pinEvent(userid, eventId);
-//			if(eventDao.getEvent(eventId).isTokenized()){
+			result = eventDao.pinEvent(userid, eventId);
+			// if(eventDao.getEvent(eventId).isTokenized()){
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			Date date = new Date();
 			String timeStamp = dateFormat.format(date);
-			Token t = new Token(eventId,userid,timeStamp);
+			Token t = new Token(eventId, userid, timeStamp);
 			int tokenId = tokendao.generateToken(t);
-//			System.out.println(userid);
-//			User u = userDao.getUser(userid);
-//			eventDao.getEvent(eventId).setTokenLimit(eventDao.getEvent(eventId).getTokenLimit()-1);
-			//System.out.println(u);
-			Mail.sendMail("ch.shivanagesh@gmail.com", "Hey there, \n Your token number is "+tokenId+" \n Thanks,\n Pinme", "Your token");
-		//}
-			} catch (Exception e) {
-			e.printStackTrace();
-		}
-        return result;
-	}
-	
-	
-	
-	public void removeEvent(int id) {
-		try {
-			 if(eventDao.getEvent(id) != null){
-				  Event ev = eventDao.getEvent(id);
-				  address.removeAddress(ev.getAddressId());
-			 }
+			// System.out.println(userid);
+			// User u = userDao.getUser(userid);
+			// eventDao.getEvent(eventId).setTokenLimit(eventDao.getEvent(eventId).getTokenLimit()-1);
+			// System.out.println(u);
+			Mail.sendMail("ch.shivanagesh@gmail.com",
+					"Hey there, \n Your token number is " + tokenId + " \n Thanks,\n Pinme", "Your token");
+			// }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return result;
 	}
 
-    public List<Event> getSearchEvents(String event){
-        return eventDao.getEventsBySearch(event);
-    }
-	
+	public int removeEvent(int id) {
+		try {
+			Event ev = eventDao.getEvent(id);
+			int addId = ev.getAddressId();
+			int rvalue = eventDao.removeEvent(id);
+			address.removeAddress(addId);
+			return rvalue;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
+	public List<Event> getSearchEvents(String event) {
+		return eventDao.getEventsBySearch(event);
+	}
+
 }
