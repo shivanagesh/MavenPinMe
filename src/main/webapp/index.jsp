@@ -3,6 +3,12 @@
 
 <head>
   <%@ include file="import.jsp" %>
+    <%  if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
+	
+	}  else{
+		response.sendRedirect("home.jsp");	
+	}
+%>
   
 <link rel="icon" href="images/pinfavicon.ico" />
 <title>Pin Me</title>
