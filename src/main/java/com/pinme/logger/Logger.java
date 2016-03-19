@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.util.logging.*;
 
 /**
- * <h1>Garden Logger</h1>
+ *
  * <p> Which contains extension for logging functionality and file handler for log <p> 
- * @author Shivanagesh Chandra Feb 14, 2016 Logger.java
+ *
  */
 
 public class Logger {

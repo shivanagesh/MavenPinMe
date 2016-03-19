@@ -11,7 +11,7 @@ import com.pinme.model.Token;
 
 
 /**
- * @author Shivanagesh Chandra Mar 7, 2016 11:32:31 PM fileUserDao.java
+ *
  */
 public class TokenDao {
 	public static List<Token> tokens = new ArrayList<Token>();

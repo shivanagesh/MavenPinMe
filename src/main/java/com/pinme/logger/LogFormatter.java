@@ -11,11 +11,11 @@ import java.util.logging.*;
 
 /**
  * 
- * <h1>LogFormatter</h1> 
+ * <h1>LogFormatter</h1>
  * <p>Create a custom Log logging Formatter to show the entries
  * in a CSV file with 3 columns: level, time-stamp, source module and message.</p>
  *
- * @author Shivanagesh Chandra Feb 15, 2016 2016 LogFormat.java
+ *
  */
 public class LogFormatter extends Formatter {
 

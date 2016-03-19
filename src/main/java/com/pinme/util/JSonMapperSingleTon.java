@@ -3,7 +3,6 @@ package com.pinme.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * @author Shivanagesh Chandra Mar 7, 2016 10:52:30 PM
  *         fileJSonMapperSingleTon.java
  */
 public class JSonMapperSingleTon {

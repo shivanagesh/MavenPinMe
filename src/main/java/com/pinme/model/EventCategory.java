@@ -1,7 +1,7 @@
 package com.pinme.model;
 
 /**
- * @author Shivanagesh Chandra Mar 8, 2016 12:53:56 AM
+ *
  * fileEventCategory.java
  */
 public class EventCategory {
