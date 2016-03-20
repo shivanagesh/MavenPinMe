@@ -57,7 +57,7 @@ function checkpattern(){
 
 	
 	
-if(!(eventname || eventdate || eventtime || address || city || (!$.isNumeric(ZipCode)) || Catergory)){
+if(!(eventname && eventdate  && eventtime && address && city && $.isNumeric(ZipCode) && Catergory)){
 	return false;
   } else{
 	return true;
