@@ -68,6 +68,35 @@ public class EventDao extends DBConnect {
 
 	}
 
+    public int updateEvent(int eventId, Event event){
+        String sql = "update event set name = ?, start_time = ?, end_time = ?, description = ?, " +
+                "token_limit = ?, is_tokenized = ?, "
+                + "address_id = ?, user_id = ?, event_category = ? where id = ?";
+        PreparedStatement eventUpdateStmt = null;
+        int result = -1;
+        try {
+            System.out.println(dbConnection);
+            eventUpdateStmt = dbConnection.prepareStatement(sql);
+            eventUpdateStmt.setString(1, event.getName());
+            eventUpdateStmt.setString(2, event.getStartDateTime());
+            eventUpdateStmt.setString(3, event.getEndDateTime());
+            eventUpdateStmt.setString(4, event.getDescription());
+            eventUpdateStmt.setInt(5, event.getTokenLimit());
+            eventUpdateStmt.setBoolean(6, event.isTokenized());
+            eventUpdateStmt.setInt(7, event.getAddressId());
+            eventUpdateStmt.setInt(8, event.getUserId());
+            eventUpdateStmt.setInt(9, event.getCategoryId());
+            eventUpdateStmt.setInt(10, eventId);
+
+            result = eventUpdateStmt.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            result = -1;
+        }
+        return result;
+    }
+
 	public int addEvent(Event event) {
 		String sql = "INSERT INTO event(name, start_time, end_time, description, token_limit, is_tokenized, "
 				+ "address_id, user_id, event_category ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -227,34 +256,7 @@ public class EventDao extends DBConnect {
 		return categorEvents;
 	}
 
-	public void updateEvent(int eventId, Event updateEvent) {
 
-		for (Event event : events) {
-			if (event.getId() == eventId) {
-				if (updateEvent.getName() != null) {
-					event.setName(updateEvent.getName());
-				}
-				if (updateEvent.getStartDateTime() != null) {
-					event.setStartDateTime(updateEvent.getStartDateTime());
-				}
-				if (updateEvent.getEndDateTime() != null) {
-					event.setEndDateTime(updateEvent.getEndDateTime());
-				}
-				if (updateEvent.getDescription() != null) {
-					event.setDescription(updateEvent.getDescription());
-				}
-				if (updateEvent.getTokenLimit() != -1) {
-					event.setTokenLimit(updateEvent.getTokenLimit());
-				}
-
-				if (updateEvent.isTokenized()) {
-					event.setTokenized(updateEvent.isTokenized());
-				}
-
-			}
-		}
-
-	}
 
     
     public List<Event> getEventsBySearch(String event){

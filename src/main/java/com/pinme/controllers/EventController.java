@@ -65,8 +65,11 @@ public class EventController {
 
 	public List<Event> getEventsByUserId(int userId) {
 		return eventDao.findEventsByUserId(userId);
-
 	}
+
+    public Event getEventByEventId(int eventId){
+        return eventDao.getEvent(eventId);
+    }
 
 	public Address getEventAddress(Event event) {
 		return address.getAddress(event.getAddressId());
@@ -84,14 +87,17 @@ public class EventController {
 		}
 	}
 
-	public void updateEvent(Address ad, int categoryId, Event event) {
+	public int updateEvent(Address ad, int categoryId, Event event) {
+        int result = -1;
 		try {
 			address.updateAddress(ad.getId(), ad);
 			event.setCategoryId(categoryId);
-			eventDao.addEvent(event);
+            result = eventDao.updateEvent(event.getId(), event);
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = -1;
 		}
+        return result;
 	}
 
 	public int pinEvent(int userid, int eventId) {

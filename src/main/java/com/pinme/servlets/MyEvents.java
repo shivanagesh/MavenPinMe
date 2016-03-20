@@ -38,7 +38,7 @@ public class MyEvents extends HttpServlet {
 			int userId = Integer.parseInt(request.getParameter("UserId"));
 			List<com.pinme.model.Event> userEvents = EventController.getInstance().getEventsByUserId(userId);
 			response.setContentType("text/json");
-			response.getWriter().write(EventUtil.populateJsonFromEvents(userEvents));
+			response.getWriter().write(EventUtil.populateJsonFromEvents(EventUtil.filterNonExpiredEvents(userEvents)));
 		} catch (Exception e) {
 			response.getWriter().write("[{'Status':'Fail'}]");
 		}
