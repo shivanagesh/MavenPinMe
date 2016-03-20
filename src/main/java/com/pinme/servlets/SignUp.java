@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.pinme.model.User;
 
-
 import com.pinme.controllers.UserController;
 
 /**
@@ -20,46 +19,53 @@ import com.pinme.controllers.UserController;
 @WebServlet("/SignUp")
 public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SignUp() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SignUp() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
-		String firstname = request.getParameter("firstname");
-		String lastname = request.getParameter("lastname");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String confirmpassword = request.getParameter("confirmpassword");
-		String email = request.getParameter("email");
-		
+		try {
 
-		User newUser = new User(firstname, lastname, password, email);
-		int userid = UserController.getInstance().addUser(newUser);
-		
-		HttpSession session=request.getSession();  
-	    session.setAttribute("userid",userid); 
-	    session.setAttribute("first_name",firstname);
-	    session.setAttribute("email", email);
-		response.setContentType("text/html");
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+			String firstname = request.getParameter("firstname");
+			String lastname = request.getParameter("lastname");
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			String confirmpassword = request.getParameter("confirmpassword");
+			String email = request.getParameter("email");
+
+			User newUser = new User(firstname, lastname, password, email);
+			int userid = UserController.getInstance().addUser(newUser);
+			User us = UserController.getInstance().getUser(email, password);
+
+			HttpSession session = request.getSession();
+			session.setAttribute("userid", us.getId());
+			session.setAttribute("first_name", firstname);
+			session.setAttribute("email", email);
+			response.setContentType("text/html");
+			request.getRequestDispatcher("home.jsp").forward(request, response);
+		} catch (Exception e) {
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+		}
 	}
 
 }

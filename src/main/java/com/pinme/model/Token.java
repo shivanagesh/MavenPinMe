@@ -83,6 +83,15 @@ public class Token {
 		this.userID = userID;
 		this.dateAndTime = dateAndTime;
 	}
+	
+	/**
+	 * @param eventId
+	 * @param userID
+	 */
+	public Token(int eventId, int userID) {
+		this.eventId = eventId;
+		this.userID = userID;
+	}
 			
 
 }

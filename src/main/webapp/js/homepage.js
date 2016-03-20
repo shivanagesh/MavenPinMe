@@ -132,11 +132,6 @@ function newevent(userId, eventId){
                     //your error code
                 }
             });
-
-//			       alert("Token emailed");
-			       $.ajax({url: "Token", success: function(result){
-			    	   alert("Token emailed");
-			       }});
 			 
 		} else {
 		    x = "You pressed Cancel!";
@@ -315,3 +310,25 @@ function loadSearchData(data, userId) {
 	}
 }
 
+
+function loadHistory(data) {
+
+	if(data.length >0){
+	for (var i = 0; i < data.length; i++) {
+    	var number = imagesid(data[i]);
+    	if(data[i].category == "Entertainment" ){
+            var imgsrc="e";
+        }else if(data[i].category == "Clothing" ){
+            var imgsrc="c";
+        }
+        else{
+            var imgsrc = data[i].category.toLowerCase();
+        }
+        var imgdata = imgsrc + number;
+        var txt = '<li id="elem' + i + '" event-id='+data[i].Id+'><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '<br> </li>';
+
+        $('#couponlist').append(txt);
+        $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());
+        $('#elem' + i).css("color", "white");
+    }}
+}
