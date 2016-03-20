@@ -27,6 +27,7 @@ public class EventUtil {
             eventObj.put("Location", address.getStreet());
             eventObj.put("category", eventCategory.getName());
             eventObj.put("Limit", event.getTokenLimit());
+            eventObj.put("isTokenized", event.isTokenized());
             return eventObj;
         }).forEach(eo -> jsonArray.add(eo));
         return jsonArray.toJSONString();

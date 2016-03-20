@@ -14,7 +14,7 @@
 				<option value="Food">Food</option>
 				<option value="Clothing">Clothing</option>
 				<option value="Entertainment">Entertainment</option>
-				<option value="recreation">recreation</option>
+				<option value="Recreation">recreation</option>
 			</select>
 		</section>
 	</form>
@@ -52,14 +52,14 @@
 						<label>Event Category: <span id="eventCategory"></span></label>
 					</div>
 					<div>
-						<label id="couponfield">Event coupons Left <span
+						<label id="couponfield">Event coupons Left : <span
 							id="eventcoupon"></span></label>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="pinme" class="btn btn-primary" onclick="newevents()">Pin
+					<button type="button" id="pinButton"  class="btn btn-primary" onclick="newevents()">Pin
 						Event</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -102,13 +102,14 @@
 
 		$('#couponlist').on('click', 'li', function(event) {
 			var data = {};
-			selectedevent = data.Id;
 			if ($(event.target).is('img')) {
 				data = $(event.target).parent('li').data("info");
 			} else {
 				data = $(event.target).data("info");
 			}
-			debugger;
+			
+			data = JSON.parse(decodeURIComponent(data))
+			
 			$('#myModalLabel').html(data.Name);
 			$('#eventDate').html(data.Date);
 			$('#eventTime').html(data.Time);
@@ -116,12 +117,21 @@
 			$('#eventDescription').html(data.Description);
 			$('#eventCategory').html(data.category);
 			var limited = data.Limit;
-			if (limited <= 0) {
-				$('#couponfield').css('display', 'none');
+			selectedevent = data.Id;
+			if(!data.isTokenized){
+				$('#eventcoupon').html("No coupons are needed, it's Public event");
+				$('#myModal').find('#pinButton').css('display', 'none');
+			}
+			else if (limited <= 0) {
+				$('#eventcoupon').html("You missed it, no more coupons, better luck next time");
+				$('#myModal').find('#pinButton').css('display', 'none');
 			} else {
 				$('#eventcoupon').html(data.Limit);
+				$('#couponfield').css('display', 'inline');
+				$('#myModal').find('#pinButton').css('display', 'inline');
 
 			}
+			
 			$('#myModal').modal('show');
 		})
 	</script>

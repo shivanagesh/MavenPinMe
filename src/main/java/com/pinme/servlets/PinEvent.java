@@ -47,6 +47,7 @@ public class PinEvent extends HttpServlet {
         }
         }
         catch(Exception e ){
+        	e.printStackTrace();
         	AppLogger.logger.log(Level.SEVERE,e.getMessage());
         	response.getWriter().write("[{'Status':'Fail'}]");
         }

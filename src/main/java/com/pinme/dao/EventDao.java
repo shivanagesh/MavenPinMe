@@ -369,7 +369,11 @@ public class EventDao extends DBConnect {
             event1.setAddressId(rs.getInt("address_id"));
             event1.setUserId(rs.getInt("user_id"));
             event1.setCategoryId(rs.getInt("event_category"));
-            event1.setTokenized(rs.getBoolean("is_tokenized"));
+            if(rs.getInt("is_tokenized") == 0){
+            	event1.setTokenized(false);
+            }else{
+            	event1.setTokenized(true);
+            }
             event1.setTokenLimit(rs.getInt("token_limit"));
             event1.setDescription(rs.getString("description"));
             event1.setStartDateTime(rs.getString("start_time"));

@@ -219,7 +219,7 @@ function loadData(data, userId) {
         debugger
         var imgdata = imgsrc + number;
 //        var txt = '<li id="elem' + i + '" onclick="newevent(' + userId + ',' + data[i].Id +')"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
-var txt ='<li id="elem'+i+'"data-info='+JSON.stringify(data[i])+'><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
+var txt ='<li id="elem'+i+'"data-info=\''+encodeURIComponent(JSON.stringify(data[i]))+'\'"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
 
         $('#couponlist').append(txt);
         $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());
