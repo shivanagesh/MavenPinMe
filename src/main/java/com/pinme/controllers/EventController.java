@@ -103,25 +103,44 @@ public class EventController {
 	public int pinEvent(int userid, int eventId) {
 		int result = -1;
 		try {
-
-			result = eventDao.pinEvent(userid, eventId);
-			// if(eventDao.getEvent(eventId).isTokenized()){
-			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			Date date = new Date();
-			String timeStamp = dateFormat.format(date);
-			Token t = new Token(eventId, userid, timeStamp);
-			int tokenId = tokendao.generateToken(t);
-			// System.out.println(userid);
-			// User u = userDao.getUser(userid);
-			// eventDao.getEvent(eventId).setTokenLimit(eventDao.getEvent(eventId).getTokenLimit()-1);
-			// System.out.println(u);
-			Mail.sendMail("ch.shivanagesh@gmail.com",
-					"Hey there, \n Your token number is " + tokenId + " \n Thanks,\n Pinme", "Your token");
-			// }
+		    Event e = eventDao.getEvent(eventId);
+			// result = eventDao.pinEvent(userid, eventId);
+			if (e.isTokenized() && e.getTokenLimit() > 0) {
+				Token t = new Token(eventId, userid);
+				int tokenId = -1;
+				int genId = tokendao.generateToken(t);
+				if (genId > 0) {
+					tokenId = tokendao.getUserToken(userid, eventId);
+				}
+				User us = userDao.getUser(userid);
+			    
+				eventDao.updateCouponCount(eventId,e.getTokenLimit()-1);
+				
+				String add= address.getAddressInString(e.getAddressId());
+				if (tokenId > -1) {
+					Mail.sendMail(us.getEmail(),
+							"Hey there, \nYour token number is " + tokenId + "," +
+							"Event Details \n" +
+							"Name : " +e.getName()+"\n"+
+							"Location : " +add+"\n"+
+							"Date : " +e.getStartDateTime()+"\n"
+							+" \n Thanks,\n Pinme", "Your token for "+e.getName());
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public int isUserAlreadyPined(int userid, int eventId){
+		try {
+			return tokendao.isUserAlreadyPined(userid,eventId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		
 	}
 
 	public int removeEvent(int id) {
@@ -138,9 +157,14 @@ public class EventController {
 	}
 
 
-    public List<Event> getSearchEvents(String event){
-        return eventDao.getEventsBySearch(event);
-    }
+	public List<Event> getSearchEvents(String event) {
+		return eventDao.getEventsBySearch(event);
+	}
+	
+	public List<Event> getUserPinedEvents(int userId){
+		return eventDao.getPinedEvents(userId);
+	}
+
     
     public List<Event> getEventsbyCategory(String event){
         return eventDao.getEventCategories(event);

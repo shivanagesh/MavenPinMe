@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pinme.controllers.EventController;
 import com.pinme.util.EventUtil;
@@ -33,9 +34,10 @@ public class Check extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	String Catergory = request.getParameter("Catergory");
+	HttpSession userSesstion = request.getSession(true);
 //	String searchelem = request.getParameter("searchelement");
 	List<com.pinme.model.Event> categoryEvents = EventController.getInstance().getEventsbyCategory(Catergory);
-    response.setContentType("text/json");
+	response.setContentType("text/json");
     response.getWriter().write(EventUtil.populateJsonFromEvents(EventUtil.filterNonExpiredEvents(categoryEvents)));
     }
 	/**

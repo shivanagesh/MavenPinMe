@@ -29,8 +29,8 @@ public class Token extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Token");
-		EventController.getInstance().pinEvent(1, 1);
+		
+		EventController.getInstance().pinEvent(1, 30);
 	}
 
 	/**
