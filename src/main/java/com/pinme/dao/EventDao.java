@@ -68,6 +68,35 @@ public class EventDao extends DBConnect {
 
 	}
 
+    public int updateEvent(int eventId, Event event){
+        String sql = "update event set name = ?, start_time = ?, end_time = ?, description = ?, " +
+                "token_limit = ?, is_tokenized = ?, "
+                + "address_id = ?, user_id = ?, event_category = ? where id = ?";
+        PreparedStatement eventUpdateStmt = null;
+        int result = -1;
+        try {
+            System.out.println(dbConnection);
+            eventUpdateStmt = dbConnection.prepareStatement(sql);
+            eventUpdateStmt.setString(1, event.getName());
+            eventUpdateStmt.setString(2, event.getStartDateTime());
+            eventUpdateStmt.setString(3, event.getEndDateTime());
+            eventUpdateStmt.setString(4, event.getDescription());
+            eventUpdateStmt.setInt(5, event.getTokenLimit());
+            eventUpdateStmt.setBoolean(6, event.isTokenized());
+            eventUpdateStmt.setInt(7, event.getAddressId());
+            eventUpdateStmt.setInt(8, event.getUserId());
+            eventUpdateStmt.setInt(9, event.getCategoryId());
+            eventUpdateStmt.setInt(10, eventId);
+
+            result = eventUpdateStmt.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            result = -1;
+        }
+        return result;
+    }
+
 	public int addEvent(Event event) {
 		String sql = "INSERT INTO event(name, start_time, end_time, description, token_limit, is_tokenized, "
 				+ "address_id, user_id, event_category ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -231,34 +260,7 @@ public class EventDao extends DBConnect {
 		return categorEvents;
 	}
 
-	public void updateEvent(int eventId, Event updateEvent) {
 
-		for (Event event : events) {
-			if (event.getId() == eventId) {
-				if (updateEvent.getName() != null) {
-					event.setName(updateEvent.getName());
-				}
-				if (updateEvent.getStartDateTime() != null) {
-					event.setStartDateTime(updateEvent.getStartDateTime());
-				}
-				if (updateEvent.getEndDateTime() != null) {
-					event.setEndDateTime(updateEvent.getEndDateTime());
-				}
-				if (updateEvent.getDescription() != null) {
-					event.setDescription(updateEvent.getDescription());
-				}
-				if (updateEvent.getTokenLimit() != -1) {
-					event.setTokenLimit(updateEvent.getTokenLimit());
-				}
-
-				if (updateEvent.isTokenized()) {
-					event.setTokenized(updateEvent.isTokenized());
-				}
-
-			}
-		}
-
-	}
 
 	public void updateCouponCount(int eventId, int tokenLimit) {
 		String sql = "UPDATE event SET token_limit = ? WHERE id = ?";
@@ -339,5 +341,46 @@ public class EventDao extends DBConnect {
 		}
 		return userEvents;
 	}
+
+
+    public List<Event> getEventCategories(String data){
+//    	SELECT id FROM event_category where name = "food"
+    	String sql;
+
+        
+        if((data).equals("All")){
+         sql="Select * from event";
+        }else{
+         String id = "Select id from event_category where name = \""+data+"\"";
+         System.out.println("id"+id);
+         sql="Select * from event where event_category=("+id+")";
+        }
+        System.out.println("sql"+sql);
+        Statement userEventQuery = null;
+        List<Event> userCategoryEvents = new ArrayList<Event>();
+        try{
+            userEventQuery =  dbConnection.createStatement();
+            
+            ResultSet rs = userEventQuery.executeQuery(sql);
+            
+            while (rs.next()) {                    
+            Event event1 = new Event();
+            event1.setId(rs.getInt("id"));
+            event1.setAddressId(rs.getInt("address_id"));
+            event1.setUserId(rs.getInt("user_id"));
+            event1.setCategoryId(rs.getInt("event_category"));
+            event1.setTokenized(rs.getBoolean("is_tokenized"));
+            event1.setTokenLimit(rs.getInt("token_limit"));
+            event1.setDescription(rs.getString("description"));
+            event1.setStartDateTime(rs.getString("start_time"));
+            event1.setEndDateTime(rs.getString("end_time"));
+            event1.setName(rs.getString("name"));
+            userCategoryEvents.add(event1);
+    }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return userCategoryEvents;
+    }
 
 }

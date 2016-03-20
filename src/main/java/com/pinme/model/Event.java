@@ -1,5 +1,7 @@
 package com.pinme.model;
 
+import com.pinme.util.MySqlUtil;
+
 public class Event {
 
 	/**
@@ -164,6 +166,24 @@ public class Event {
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
+
+    /**
+     *
+     * @return formatted date to be displayed in UI
+     */
+
+    public String getFormattedDate(){
+        return MySqlUtil.getDisplayDate(startDateTime);
+
+    }
+
+    /**
+     *
+     * @return formatted time to be diaplayed in UI
+     */
+    public String getFormattedTime(){
+        return MySqlUtil.getTime(startDateTime);
+    }
 	
 		
 }

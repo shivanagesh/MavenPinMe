@@ -9,9 +9,6 @@
 		response.sendRedirect("home.jsp");	
 	}
 %>
-  
-<link rel="icon" href="images/pinfavicon.ico" />
-<title>Pin Me</title>
 </head>
 
 <body class="padding">
@@ -75,11 +72,11 @@
 		</fieldset>
 	
 	</section>
-
+<!-- 
 	<footer>
 		&copy; CopyRights:Pin Me <br> developed by Prathyusha
 		Rani,Prathyusha,Shiva and Divya
-	</footer>
+	</footer> -->
 	<script type="text/javascript" src="js/homepage.js"></script>
 </body>
 <script>

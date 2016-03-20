@@ -22,6 +22,7 @@ import com.pinme.dao.EventCategoryDao;
 import com.pinme.model.Address;
 import com.pinme.model.Event;
 import com.pinme.model.EventCategory;
+import com.pinme.util.EventUtil;
 import com.pinme.util.JSonMapperSingleTon;
 
 /**
@@ -77,8 +78,9 @@ public class Home extends HttpServlet {
 			jsonlist.add(JSonMapperSingleTon.getInstance().writeValueAsString(object));
 			
 		}
-		response.getWriter().write(JSonMapperSingleTon.getInstance().writeValueAsString(jsonlist));
-		
+//		response.getWriter().write(JSonMapperSingleTon.getInstance().writeValueAsString(jsonlist));
+		response.getWriter().write(EventUtil.populateJsonFromEvents(jsonlist));	
+
 		
 	}
 

@@ -38,14 +38,12 @@ public class Search extends HttpServlet {
      */
     public Search() {
         super();
-        // TODO Auto-generated constructor stub
-    }
+           }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String searchelem = request.getParameter("searchelement");
 		List<com.pinme.model.Event> SearchEvents = EventController.getInstance().getSearchEvents(searchelem);
         response.setContentType("text/json");
@@ -56,27 +54,7 @@ public class Search extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 HttpSession userSesstion = request.getSession(true);
-//	        int userId = (int)userSesstion.getAttribute("userid");
-//	        String firstName = (String)userSesstion.getAttribute("first_name");
-//	        String email = (String)userSesstion.getAttribute("email");
-//
-//	        // Check if the user is logged in
-//	        if(userId > 0 && firstName != null && email != null){
-////	            Address address = getEventAddress(request);
-////	            com.pinme.model.Event event = getEvent(request, userId);
-//	        	String searchelem = request.getParameter("searchelement");
-//	    		
-//            int result = EventController.getInstance().getSearchEvents(searchelem);
-//	            if(result < 0){
-//	                userSesstion.setAttribute("event-create-error", "Internal Error: Unable to post event!");
-//	                response.setContentType("text/html");
-//	                request.getRequestDispatcher("Search.jsp").forward(request, response);
-//	            } else{
-//	                response.setContentType("text/html");
-//	                request.getRequestDispatcher("Search.jsp").forward(request, response);
-//	            }
-//	        }
+		 HttpSession userSession = request.getSession(true);
 		 doGet(request,response);
 	}
 	

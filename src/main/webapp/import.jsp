@@ -10,7 +10,12 @@
 <script src="js/jquery-2.2.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/app.js"></script>
-
+<title>Pin Me</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+	
+	<footer>
+		@CopyRights:Pin Me <br> developed by Prathyusha
+		Rani,Prathyusha,Shiva & Divya
+	</footer>

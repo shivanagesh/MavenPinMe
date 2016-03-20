@@ -19,8 +19,3 @@
             </div>
         </div>
     </header>
-    
-    <footer>
-    @CopyRights:Pin Me
-    <br> developed by Prathyusha Rani,Prathyusha,Shiva  Divya
-</footer>

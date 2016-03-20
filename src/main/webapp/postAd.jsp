@@ -1,12 +1,11 @@
     <!Doctype html>
     <html>
-
     <head>
     <%@ include file="import.jsp" %>
       <%@ include file="header.jsp" %>
+        <%@ include file="SessionCheck.jsp" %>
     </head>
     <body class="padding">
-  
         <section class="divider">
     </section>
         <section>
@@ -21,6 +20,7 @@
           </div><div>
       <fieldset>
       <legend>Location</legend>
+      <section class="Location">
       <div>
           <label>Address:<input type="text" name="address" id="address" placeholder="1303 oakcircle st"></label>
             </div><div>
@@ -30,9 +30,12 @@
             </div><div>
           <label>Addition Landmarks:<input type="text" name="landmarks" id="landmarks" placeholder="near school"></label>
           </div>
+          </section>
       </fieldset>
-        </div><div>
-      <label>Catergory
+        </div>
+        
+        <div>
+      <label>Category
       <select name="Catergory" class="select">
         <option value="Food" selected="selected">Food</option>
         <option value="Clothing">Clothing</option>
@@ -46,6 +49,7 @@
     <option value="yes" id="yes">Yes</option>
     <option value="No" id="no" selected="selected">No</option>
     </select>
+    </label>
          </div><div id="limit" class="limit">
          <label>Set Maximum Value
          <input type="number" id="limit" name="limit" min="0"></label>
@@ -59,10 +63,6 @@
     </fieldset>
     </form>
         </section>
-        <footer>
-    @CopyRights:Pin Me <br>
-     developed by Prathyusha Rani,Prathyusha,Shiva & Divya
-    </footer>
     <script type="text/javascript" src="js/app.js"></script>
     </body>
     </html>

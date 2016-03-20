@@ -117,14 +117,29 @@ public class AddressDao extends DBConnect {
 
 	}
 
-	public void updateAddress(int AddressId, Address updateAddress) {
-
-		for (Address address : addresses) {
-			if (address.getId() == AddressId) {
-				address = updateAddress;
-
-			}
-		}
+	public int updateAddress(int addressId, Address updateAddress) {
+        String sql = "update address set street = ?, city = ?, state = ?, " +
+                " zipcoe = ?, country = ?, latitude = ?, longitude = ? where id = ?";
+        PreparedStatement addressUpdateStmt = null;
+        int result = -1;
+        try {
+            System.out.println(dbConnection);
+            addressUpdateStmt = dbConnection.prepareStatement(sql);
+            addressUpdateStmt.setString(1, updateAddress.getStreet());
+            addressUpdateStmt.setString(2, updateAddress.getCity());
+            addressUpdateStmt.setString(3, updateAddress.getState());
+            addressUpdateStmt.setString(4, updateAddress.getZipcode());
+            addressUpdateStmt.setString(5, updateAddress.getCountry());
+            addressUpdateStmt.setString(6, updateAddress.getLatitude());
+            addressUpdateStmt.setString(7, updateAddress.getLongitude());
+            addressUpdateStmt.setInt(8, addressId);
+            result = addressUpdateStmt.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            result = -1;
+        }
+        return result;
 
 	}
 

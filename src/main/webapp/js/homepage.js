@@ -216,37 +216,39 @@ function loadData(data, userId) {
         	}else{
         var imgsrc = data[i].category.toLowerCase();
         }
+        debugger
         var imgdata = imgsrc + number;
-        var txt = '<li id="elem' + i + '" onclick="newevent(' + userId + ',' + data[i].Id +')"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
+//        var txt = '<li id="elem' + i + '" onclick="newevent(' + userId + ',' + data[i].Id +')"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
+var txt ='<li id="elem'+i+'"data-info='+JSON.stringify(data[i])+'><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
 
         $('#couponlist').append(txt);
         $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), "+ getRandomColor());
         $('#elem' + i).css("color", "white");
     }}
 }
-
-function getEventList(){
-    var searchelementof = document.getElementById("searchelement").value;
-    for (var i = 0; i < data.length; i++) {
-        if(data[i].category.toLowerCase() == searchelementof){
-        	var number = imagesid(data[i]);
-            
-            if(data[i].category == "Entertainment" ){
-            	var imgsrc="e";
-            }else if(data[i].category == "Clothing" ){
-            	var imgsrc="c";
-            	}else{
-            var imgsrc = data[i].category.toLowerCase();
-            }
-            var imgdata = imgsrc + number;
-            var txt = '<li id="elem' + i + '" onclick="newevent()"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
-
-            $('#couponlist').append(txt);
-            $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), "+ getRandomColor());
-            $('#elem' + i).css("color", "white");
-        }
-    }
-}
+//
+//function getEventList(){
+//    var searchelementof = document.getElementById("searchelement").value;
+//    for (var i = 0; i < data.length; i++) {
+//        if(data[i].category.toLowerCase() == searchelementof){
+//        	var number = imagesid(data[i]);
+//            
+//            if(data[i].category == "Entertainment" ){
+//            	var imgsrc="e";
+//            }else if(data[i].category == "Clothing" ){
+//            	var imgsrc="c";
+//            	}else{
+//            var imgsrc = data[i].category.toLowerCase();
+//            }
+//            var imgdata = imgsrc + number;
+//            var txt = '<li id="elem' + i + '" onclick="newevent()"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
+//
+//            $('#couponlist').append(txt);
+//            $('#elem' + i).css("background","linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), "+ getRandomColor());
+//            $('#elem' + i).css("color", "white");
+//        }
+//    }
+//}
 
 $(document).ready(function() {
 
@@ -276,9 +278,7 @@ $(document).ready(function() {
 	    
 	    
 	    $myEvents.on("click", ".edit", function() {
-	    	window.location.replace("/editAd.jsp");
-
-	       
+	    	window.location.replace("Event?event_id="+$(this).parent().attr( 'event-id' ));
 	    })
 	   
 
