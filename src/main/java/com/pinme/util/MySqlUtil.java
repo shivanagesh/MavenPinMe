@@ -24,6 +24,19 @@ public class MySqlUtil {
 
     }
 
+    public static java.util.Date getLocalDate(String mySqlDate){
+        if(mySqlDate != null){
+            try{
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                java.util.Date sqlDate = sdf.parse(mySqlDate);
+                return sqlDate;
+            }  catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
     public static String getDate(String mySqlDate){
         if(mySqlDate != null){
             try{

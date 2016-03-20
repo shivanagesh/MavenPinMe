@@ -36,7 +36,7 @@ public class Check extends HttpServlet {
 //	String searchelem = request.getParameter("searchelement");
 	List<com.pinme.model.Event> categoryEvents = EventController.getInstance().getEventsbyCategory(Catergory);
     response.setContentType("text/json");
-    response.getWriter().write(EventUtil.populateJsonFromEvents(categoryEvents));
+    response.getWriter().write(EventUtil.populateJsonFromEvents(EventUtil.filterNonExpiredEvents(categoryEvents)));
     }
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
