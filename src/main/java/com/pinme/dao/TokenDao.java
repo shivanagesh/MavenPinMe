@@ -82,7 +82,7 @@ public class TokenDao extends DBConnect{
 	}
 	
 	public List<Integer> getUserAllToken(int userId){
-		String sql = "Select id from token where user_id = ?  and event_id = ?";
+		String sql = "Select id from token where user_id = ?";
 		PreparedStatement tokenSelectStatement = null;
 		List<Integer> eventIds = new ArrayList<Integer>();
 		try {
@@ -100,6 +100,32 @@ public class TokenDao extends DBConnect{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public int isUserAlreadyPined(int userId, int eventId){
+		String sql = "Select id from token where user_id = ?  and event_id = ?";
+		System.out.println(userId);
+		System.out.println(eventId);
+		System.out.println(sql);
+		PreparedStatement tokenSelectStatement = null;
+		try {
+			tokenSelectStatement = dbConnection.prepareStatement(sql);
+			tokenSelectStatement.setInt(1, userId);
+			tokenSelectStatement.setInt(2, eventId);
+			
+			ResultSet rs = tokenSelectStatement.executeQuery();
+			System.out.println(rs);
+			while (rs.next()) {
+//				System.out.println("goining inside");
+//				System.out.println(rs.getString("id"));
+				return Integer.parseInt(rs.getString("id"));
+			}
+			return -1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
 	}
 	
 	

@@ -132,6 +132,16 @@ public class EventController {
 		}
 		return result;
 	}
+	
+	public int isUserAlreadyPined(int userid, int eventId){
+		try {
+			return tokendao.isUserAlreadyPined(userid,eventId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		
+	}
 
 	public int removeEvent(int id) {
 		try {

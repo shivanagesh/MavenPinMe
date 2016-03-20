@@ -216,7 +216,7 @@ function loadData(data, userId) {
         	}else{
         var imgsrc = data[i].category.toLowerCase();
         }
-        debugger
+        
         var imgdata = imgsrc + number;
 //        var txt = '<li id="elem' + i + '" onclick="newevent(' + userId + ',' + data[i].Id +')"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
 var txt ='<li id="elem'+i+'"data-info=\''+encodeURIComponent(JSON.stringify(data[i]))+'\'"><img src="images/'+ imgdata +'.jpg" alt="image of"'+data[i].category+'">' + data[i].Name + '</li>';
@@ -264,7 +264,6 @@ $(document).ready(function() {
 	    	    contentType: "application/json",
 	    	    dataType: "text",
 	    	    success: function(response) {
-	    	    	debugger;
 	    	    	var obj = $.parseJSON(response);
 	    	    	if(obj.Status == "Success"){
 	    	    		

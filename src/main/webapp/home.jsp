@@ -117,6 +117,22 @@
 			$('#eventCategory').html(data.category);
 			var limited = data.Limit;
 			selectedevent = data.Id;
+			var isUserAlreadyTaken = false;
+			
+			
+			$.ajax({
+				url : 'CheckIsPined?'+$.param({"EventId": selectedevent,"UserId":userid}),
+				asyc : false		
+			}).done(function(data) {
+				if(data.Satus == "success"){
+					$('#eventcoupon').html("You already taken it");
+					$('#myModal').find('#pinButton').css('display', 'none');
+				}
+			});
+			  
+			
+			
+			
 			if(!data.isTokenized){
 				$('#eventcoupon').html("No coupons are needed, it's Public event");
 				$('#myModal').find('#pinButton').css('display', 'none');
@@ -130,6 +146,7 @@
 				$('#myModal').find('#pinButton').css('display', 'inline');
 
 			}
+			
 			
 			$('#myModal').modal('show');
 		})
