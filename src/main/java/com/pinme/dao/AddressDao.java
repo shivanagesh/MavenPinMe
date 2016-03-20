@@ -18,37 +18,37 @@ import com.pinme.model.Event;
 public class AddressDao extends DBConnect {
 	public static List<Address> addresses = new ArrayList<Address>();
 	private static AtomicInteger uniqueId = new AtomicInteger();
-    Connection dbConnection = getDBConnection();
+	Connection dbConnection = getDBConnection();
 
 	/**
 	 * 
 	 */
 	public AddressDao() {
-		
+
 	}
 
 	public int addAddress(Address address) {
-        String sql = "INSERT INTO address(street, city, state, zipcoe, country, latitude, longitude) VALUES (?, ?, ?, ?,?, ?, ?)";
-        PreparedStatement addressInsertStmt = null;
-        int id = -1;
-        try {
-            System.out.println(dbConnection);
-            addressInsertStmt = dbConnection.prepareStatement(sql);
-            addressInsertStmt.setString(1, address.getStreet());
-            addressInsertStmt.setString(2, address.getCity());
-            addressInsertStmt.setString(3, address.getState());
-            addressInsertStmt.setString(4, address.getZipcode());
-            addressInsertStmt.setString(5, address.getCountry());
-            addressInsertStmt.setString(6, address.getLatitude());
-            addressInsertStmt.setString(7, address.getLongitude());
+		String sql = "INSERT INTO address(street, city, state, zipcoe, country, latitude, longitude) VALUES (?, ?, ?, ?,?, ?, ?)";
+		PreparedStatement addressInsertStmt = null;
+		int id = -1;
+		try {
+			System.out.println(dbConnection);
+			addressInsertStmt = dbConnection.prepareStatement(sql);
+			addressInsertStmt.setString(1, address.getStreet());
+			addressInsertStmt.setString(2, address.getCity());
+			addressInsertStmt.setString(3, address.getState());
+			addressInsertStmt.setString(4, address.getZipcode());
+			addressInsertStmt.setString(5, address.getCountry());
+			addressInsertStmt.setString(6, address.getLatitude());
+			addressInsertStmt.setString(7, address.getLongitude());
 
-            id = addressInsertStmt.executeUpdate();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            id = -1;
-        }
-        return id;
+			id = addressInsertStmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			id = -1;
+		}
+		return id;
 	}
 
 	public void removeAddress(int id) {
@@ -67,32 +67,53 @@ public class AddressDao extends DBConnect {
 	}
 
 	public Address getAddress(int addressId) {
-        List<Address> addressList = new ArrayList<Address>();
+		List<Address> addressList = new ArrayList<Address>();
 
-            String sql = "Select * from address where id=?";
-            PreparedStatement addressQueryStmt = null;
-            try{
-                addressQueryStmt = dbConnection.prepareStatement(sql);
-                addressQueryStmt.setInt(1, addressId);
-                ResultSet rs = addressQueryStmt.executeQuery();
-                while (rs.next()) {
-                   Address address = new Address();
-                    address.setId(rs.getInt("id"));
-                    address.setStreet(rs.getString("street"));
-                    address.setCity(rs.getString("city"));
-                    address.setState(rs.getString("state"));
-                    address.setZipcode(rs.getString("zipcoe"));
-                    address.setCountry(rs.getString("country"));
-                    address.setLatitude(rs.getString("latitude"));
-                    address.setLongitude(rs.getString("longitude"));
-                    addressList.add(address)  ;
-                }
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+		String sql = "Select * from address where id=?";
+		PreparedStatement addressQueryStmt = null;
+		try {
+			addressQueryStmt = dbConnection.prepareStatement(sql);
+			addressQueryStmt.setInt(1, addressId);
+			ResultSet rs = addressQueryStmt.executeQuery();
+			while (rs.next()) {
+				Address address = new Address();
+				address.setId(rs.getInt("id"));
+				address.setStreet(rs.getString("street"));
+				address.setCity(rs.getString("city"));
+				address.setState(rs.getString("state"));
+				address.setZipcode(rs.getString("zipcoe"));
+				address.setCountry(rs.getString("country"));
+				address.setLatitude(rs.getString("latitude"));
+				address.setLongitude(rs.getString("longitude"));
+				addressList.add(address);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+		return addressList.get(0);
 
-        return addressList.get(0);
+	}
+
+	public String getAddressInString(int addressId) {
+
+		String sql = "Select * from address where id=?";
+		PreparedStatement addressQueryStmt = null;
+		String address = null;
+		try {
+			addressQueryStmt = dbConnection.prepareStatement(sql);
+			addressQueryStmt.setInt(1, addressId);
+			ResultSet rs = addressQueryStmt.executeQuery();
+			while (rs.next()) {
+				address = rs.getString("street") + ", " + rs.getString("city") + ", " + rs.getString("state") + ", "
+						+ rs.getString("zipcoe") + ", " + rs.getString("country");
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return address;
 
 	}
 

@@ -10,7 +10,7 @@ import java.util.List;
 import com.pinme.model.User;
 
 /**
- *
+ * @author Shivanagesh Chandra Mar 7, 2016 11:32:31 PM fileUserDao.java
  */
 public class UserDao extends DBConnect {
 	public static List<User> users = new ArrayList<User>();;

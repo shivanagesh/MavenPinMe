@@ -4,7 +4,8 @@
 </div>
 <h1 class="header">Pin Me!</h1>
         <div class="user">
-            <button class="account"><i class="fa fa-user fa-3x"></i></button>
+            <button class="account"><i class="fa fa-user fa-3x"></i> <%=session.getAttribute("first_name")%></button>
+           
             <div class="user-content">
                 <ul>
              <li>

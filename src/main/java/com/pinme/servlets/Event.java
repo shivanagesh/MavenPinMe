@@ -68,7 +68,10 @@ public class Event extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession userSesstion = request.getSession(true);
+    	
+    	
+         
+    	HttpSession userSesstion = request.getSession(true);
         int userId = (int)userSesstion.getAttribute("userid");
         String firstName = (String)userSesstion.getAttribute("first_name");
         String email = (String)userSesstion.getAttribute("email");
@@ -109,7 +112,9 @@ public class Event extends HttpServlet {
                     request.getRequestDispatcher("home.jsp").forward(request, response);
                 }
             }
+            request.getRequestDispatcher("home.jsp").forward(request, response);
         }
+    	response.sendRedirect("/pinme/home.jsp");
 
         // TODO Auto-generated method stub
 //                doGet(request, response);
@@ -137,9 +142,11 @@ public class Event extends HttpServlet {
                 description,
                 maxLimitValue != null && maxLimitValue.length() > 0 ? Integer.parseInt(maxLimitValue) : 0,
                 settingLimit.equals("yes") ? true:false, -1, eventName, userId, eventCategoryId);
+
         if(!event.isTokenized()){
             event.setTokenLimit(0);
         }
+
         return event;
     }
 

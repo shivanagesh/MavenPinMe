@@ -26,7 +26,7 @@ public class PinEvent extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int userId = Integer.parseInt(request.getParameter("UserId"));
-        List<com.pinme.model.Event> userEvents = EventController.getInstance().getPinnedEvents(userId);
+        List<com.pinme.model.Event> userEvents = EventController.getInstance().getUserPinedEvents(userId);
         response.setContentType("text/json");
         response.getWriter().write(EventUtil.populateJsonFromEvents(userEvents));
     }
@@ -47,6 +47,7 @@ public class PinEvent extends HttpServlet {
         }
         }
         catch(Exception e ){
+        	e.printStackTrace();
         	AppLogger.logger.log(Level.SEVERE,e.getMessage());
         	response.getWriter().write("[{'Status':'Fail'}]");
         }
