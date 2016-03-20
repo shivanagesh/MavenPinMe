@@ -47,7 +47,7 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Event> list = EventController.getInstance().getEvents();
+		List<Event> list = EventUtil.filterNonExpiredEvents(EventController.getInstance().getEvents());
 		JSONArray jsonlist = new JSONArray();
 		
 		for (Event ev : list) {

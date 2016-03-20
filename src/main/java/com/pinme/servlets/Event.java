@@ -58,7 +58,7 @@ public class Event extends HttpServlet {
             // Fetch all events
             List<com.pinme.model.Event> userEvents = EventController.getInstance().getEvents();
             response.setContentType("text/json");
-            response.getWriter().write(EventUtil.populateJsonFromEvents(userEvents));
+            response.getWriter().write(EventUtil.populateJsonFromEvents(EventUtil.filterNonExpiredEvents(userEvents)));
         }
     }
 
