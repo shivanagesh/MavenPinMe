@@ -132,7 +132,7 @@
 	background-color: #C0CA33;
 	font-size: 15px;
 	color: #1B5E20;
-	padding: 15px;
+	padding:  15px;
 	border-radius: 10px;
 	border-style: none;
 }
@@ -140,6 +140,22 @@
 .button:hover {
 	background-color: #004D40;
 	color: #64DD17;
+}
+.button_reset {
+	background-color: #90A4AE;
+	font-size: 15px;
+	color: #212121;
+	padding:  15px 30px;
+	border-radius: 10px;
+	border-style: none;
+}
+.button_reset:hover {
+	background-color: #FF8A65;
+	font-size: 15px;
+	color: #212121;
+	padding: 15px 30px;
+	border-radius: 10px;
+	border-style: none;
 }
 
 .buttons {
@@ -438,4 +454,20 @@ ul#couponlist:before, ul#couponlist:after {
 }
 .Location input{
 	    margin:1px 30px;
+}
+
+
+.modal_header{
+	background:#E6EE9C;
+	color:#004D40;
+	font-style:bold;
+	height:100%;
+}
+.modal_header::before{
+	content:"";
+	clear:both;
+}
+.modal_header::after{
+	content:"";
+	clear:both;
 }

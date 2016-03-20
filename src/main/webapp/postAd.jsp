@@ -9,24 +9,24 @@
         <section class="divider">
     </section>
         <section>
-        <form action="Event" method="POST">
+        <form action="Event" method="POST" onSubmit="return checkpattern()">
     <fieldset class="postingAd">
     <div>
-        <label>Event Name:<input type="text" name="event" id="eventname" placeholder="Story Telling"></label>
+        <label>Event Name<sup>*</sup>:<input type="text" name="event" id="eventname" placeholder="Story Telling" required></label>
         </div><div>
-        <label>Event Date : <input type="date" name="eventdate" id="eventdate" placeholder="mm-dd-yy"></label>
+        <label>Event Date<sup>*</sup>: <input type="date" name="eventdate" id="eventdate" placeholder="mm-dd-yy" required></label>
           </div><div>
-        <label>Event Time :<input type="time" name="eventtime" id="eventtime"></label>
+        <label>Event Time<sup>*</sup>:<input type="time" name="eventtime" id="eventtime" required></label>
           </div><div>
       <fieldset>
       <legend>Location</legend>
       <section class="Location">
       <div>
-          <label>Address:<input type="text" name="address" id="address" placeholder="1303 oakcircle st"></label>
+          <label>Address<sup>*</sup>:<input type="text" name="address" id="address" placeholder="1303 oakcircle st" required></label>
             </div><div>
-          <label>City:<input type="text" name="city" id="city" placeholder="SFO"></label>
+          <label>City<sup>*</sup>:<input type="text" name="city" id="city" placeholder="SFO" required></label>
             </div><div>
-          <label>ZipCode:<input type="text" name="zipcode" id="zipcode" placeholder="12345"></label>
+          <label>ZipCode<sup>*</sup>:<input type="text" name="zipcode" id="zipcode" placeholder="12345" required></label>
             </div><div>
           <label>Addition Landmarks:<input type="text" name="landmarks" id="landmarks" placeholder="near school"></label>
           </div>
@@ -35,8 +35,8 @@
         </div>
         
         <div>
-      <label>Category
-      <select name="Catergory" class="select">
+      <label>Category<sup>*</sup>
+      <select name="Catergory" id="Catergory" class="select" required>
         <option value="Food" selected="selected">Food</option>
         <option value="Clothing">Clothing</option>
         <option value="Entertainment">Entertainment</option>

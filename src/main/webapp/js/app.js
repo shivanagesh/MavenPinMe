@@ -43,3 +43,29 @@ function validationSignup() {
     return true;
 }
 
+function checkpattern(){
+	
+	
+		var eventname = document.getElementById("eventname").value.trim();
+		var eventdate = document.getElementById("eventdate").value.trim();
+		var eventtime = document.getElementById("eventtime").value.trim();
+		var address = document.getElementById("address").value.trim();
+		var city = document.getElementById("city").value.trim();
+		var ZipCode = document.getElementById("zipcode").value;
+		var Catergory = $("#Catergory").val();
+		
+
+	
+	
+if(!(eventname || eventdate || eventtime || address || city || (!$.isNumeric(ZipCode)) || Catergory)){
+	return false;
+  } else{
+	return true;
+  }
+
+
+}
+
+function isNumeric(n) {
+	  return !isNaN(parseFloat(n)) && isFinite(n);
+	}

@@ -29,7 +29,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header modal_header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
@@ -42,8 +42,8 @@
           <div><label id="couponfield">Event coupons Left <span id="eventcoupon"></span></label></div>  
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="pinme" class="btn btn-primary" onclick="newevents()">Pin Event</button>
+        <button type="button" class="button_reset" data-dismiss="modal">Close</button>
+        <button type="pinme" class="button" onclick="newevents()">Pin Event</button>
       </div>
     </div>
   </div>
